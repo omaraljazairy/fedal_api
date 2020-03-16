@@ -1,0 +1,133 @@
+[
+{
+    "model": "spanglish.category",
+    "pk": 1,
+    "fields": {
+        "created": "2020-03-15T13:29:37Z",
+        "name": "verb"
+    }
+},
+{
+    "model": "spanglish.category",
+    "pk": 2,
+    "fields": {
+        "created": "2020-03-16T17:33:51Z",
+        "name": "greeting"
+    }
+},
+{
+    "model": "spanglish.language",
+    "pk": 1,
+    "fields": {
+        "name": "English",
+        "iso1": "en",
+        "added": "2020-03-15T13:35:51Z"
+    }
+},
+{
+    "model": "spanglish.sentence",
+    "pk": 1,
+    "fields": {
+        "sentence": "Como estas",
+        "categoryid": 2,
+        "added": "2020-03-16T17:34:40Z"
+    }
+},
+{
+    "model": "spanglish.translation",
+    "pk": 1,
+    "fields": {
+        "languageid": 1,
+        "wordid": 1,
+        "sentenceid": null,
+        "added": "2020-03-15T21:25:40Z",
+        "translation": "Talk"
+    }
+},
+{
+    "model": "spanglish.translation",
+    "pk": 2,
+    "fields": {
+        "languageid": 1,
+        "wordid": null,
+        "sentenceid": 1,
+        "added": "2020-03-16T17:36:15Z",
+        "translation": "How are you"
+    }
+},
+{
+    "model": "spanglish.verb",
+    "pk": 1,
+    "fields": {
+        "wordid": 1,
+        "verb": "hablo",
+        "tense": "present",
+        "pronouns": "yo",
+        "added": "2020-03-16T18:09:05Z"
+    }
+},
+{
+    "model": "spanglish.verb",
+    "pk": 3,
+    "fields": {
+        "wordid": 1,
+        "verb": "hablas",
+        "tense": "present",
+        "pronouns": "tu",
+        "added": "2020-03-16T18:12:49Z"
+    }
+},
+{
+    "model": "spanglish.verb",
+    "pk": 4,
+    "fields": {
+        "wordid": 1,
+        "verb": "habla",
+        "tense": "present",
+        "pronouns": "el/ella/Ud",
+        "added": "2020-03-16T18:13:05Z"
+    }
+},
+{
+    "model": "spanglish.verb",
+    "pk": 5,
+    "fields": {
+        "wordid": 1,
+        "verb": "hablamos",
+        "tense": "present",
+        "pronouns": "nosotros",
+        "added": "2020-03-16T18:13:17Z"
+    }
+},
+{
+    "model": "spanglish.verb",
+    "pk": 6,
+    "fields": {
+        "wordid": 1,
+        "verb": "hablais",
+        "tense": "present",
+        "pronouns": "vosotros",
+        "added": "2020-03-16T18:13:35Z"
+    }
+},
+{
+    "model": "spanglish.verb",
+    "pk": 7,
+    "fields": {
+        "wordid": 1,
+        "verb": "hablan",
+        "tense": "present",
+        "pronouns": "ellos/ellas/Uds",
+        "added": "2020-03-16T18:13:51Z"
+    }
+},
+{
+    "model": "spanglish.word",
+    "pk": 1,
+    "fields": {
+        "word": "Hablar",
+        "categoryid": 1,
+        "added": "2020-03-15T14:01:45Z"
+    }
+}
+]
