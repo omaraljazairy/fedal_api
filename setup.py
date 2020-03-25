@@ -4,7 +4,6 @@ from setuptools import find_packages, setup
 from setuptools.command.develop import develop
 from setuptools.command.install import install
 
-
 BASE_DIR = os.getcwd()
 
 
@@ -13,7 +12,6 @@ class PreDevelopCommand(develop):
 
     def run(self):
         """Execute a script."""
-        print("PreDevelopCommand executed")
         develop.run(self)
 
 
@@ -22,24 +20,25 @@ class PreInstallCommand(install):
 
     def run(self):
         """Execute the preinstall functions."""
-        print("PreInstallCommand executed")
         self.create_log_dir()
         install.do_egg_install(self)
 
     def create_log_dir(self):
         """Create the logs folder inside the root application app."""
         log_dir = 'api/logs'
-        dir = os.path.join(BASE_DIR, log_dir )
+        dir = os.path.join(BASE_DIR, log_dir)
         # create directories, if exists don't throw an exception
         os.makedirs(dir, exist_ok=True)
+
 
 def read(fname):
     """Open the file provided as an argument."""
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+
 setup(
     name='FedalRestfulAPI',
-    version='1.1',
+    version='1.2',
     description='private resutful api',
     author='Omar Aljazairy',
     author_email='omar@fedal.nl',
