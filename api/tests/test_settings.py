@@ -256,6 +256,7 @@ FIXTURES = {
                               'spanglish/tests/fixtures/spanglish.json'),
 }
 
+# setup.py sdist --format=zip egg_info --tag-date --tag-build=alpha
 # nose.config: INFO: Ignoring files matching ['^\\.', '^_', '^setup\\.py$']
 # admin - myadmin_2020
 # omar - iamomar_2020
