@@ -126,16 +126,24 @@ DATABASES = {
         'PASSWORD': test_env.DB['PASSWORD'],
         'HOST': test_env.DB['HOST'],
         'PORT': test_env.DB['PORT']
+    },
+    'spanglish': {
+        'ENGINE': test_env.DB['ENGINE'],
+        'NAME': test_env.DB['NAME'],
+        'USER': test_env.DB['USER'],
+        'PASSWORD': test_env.DB['PASSWORD'],
+        'HOST': test_env.DB['HOST'],
+        'PORT': test_env.DB['PORT']
     }
 }
 
 DATABASE_RAW_TABLES = {
-    "category": " Spanglish.Category ",
-    "language": "Spanglish.Language",
-    "sentence": "Spanglish.Sentence",
-    "translation": "Spanglish.Translation",
-    "verb": "Spanglish.Verb",
-    "word": "Spanglish.Word"
+    "category": "Category ",
+    "language": "Language",
+    "sentence": "Sentence",
+    "translation": "Translation",
+    "verb": "Verb",
+    "word": "Word"
 }
 
 DATABASE_ROUTERS = [
@@ -239,7 +247,7 @@ SIMPLE_JWT = {
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
-    # '--cover-erase',
+    '--cover-erase',
     '--with-coverage',
     '--cover-package=spanglish',
     '--with-xunit',

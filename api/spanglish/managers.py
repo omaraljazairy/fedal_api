@@ -33,8 +33,8 @@ class WordsQuerySet(models.QuerySet):
         join " + settings.DATABASE_RAW_TABLES['language'] + "\
         as l on (LanguageId = l.Id) where ISO1 = %s;"
 
-        LOGGER.debug("fetch word called with iso1: %s" % iso1)
-        LOGGER.debug("fetch word called with sql: %s" % sql)
+        # LOGGER.debug("fetch word called with iso1: %s" % iso1)
+        # LOGGER.debug("fetch word called with sql: %s" % sql)
 
         translations = {
             'word': 'word',
@@ -45,7 +45,7 @@ class WordsQuerySet(models.QuerySet):
         from .models import Word
         result = Word.words.raw(sql, params, translations)
 
-        LOGGER.debug("result returned: %s" % result)
+        # LOGGER.debug("result returned: %s" % result)
 
         return result
 
@@ -66,6 +66,6 @@ class WordsManager(models.Manager):
         takes the iso1 as a parameter, in this case the default value is en
         """
         data = self.get_queryset().fetch_words(iso1=iso1)
-        LOGGER.debug("data returned %s" % data)
+        # LOGGER.debug("data returned %s" % data)
 
         return data
