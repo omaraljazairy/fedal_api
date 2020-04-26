@@ -1,6 +1,6 @@
 """A seperate module for the managers.
 
-I'm going to us sql raw throughout this project
+I'm going to use sql raw throughout this model
 Which will make me mix the models in two or three
 managers.
 """
@@ -14,7 +14,7 @@ LOGGER = logging.getLogger("spanglish")
 otz = pytz.timezone('Europe/Amsterdam')
 
 
-class WordsQuerySet(models.QuerySet):
+class WordQuerySet(models.QuerySet):
     """create functions that will interact with the Word object."""
 
     def fetch_words(self, iso1):
@@ -42,7 +42,7 @@ class WordsQuerySet(models.QuerySet):
             'translation': 'translation',
             'language': 'language',
         }
-        from .models import Word
+        from spanglish.models import Word
         result = Word.words.raw(sql, params, translations)
 
         # LOGGER.debug("result returned: %s" % result)
@@ -50,15 +50,15 @@ class WordsQuerySet(models.QuerySet):
         return result
 
 
-class WordsManager(models.Manager):
+class WordManager(models.Manager):
     """A managers for the Word model.
 
     it will be the interface for the model queries.
     """
 
     def get_queryset(self):
-        """Return the WordsQuerySet object."""
-        return WordsQuerySet(self.model, using=self._db)
+        """Return the WordQuerySet object."""
+        return WordQuerySet(self.model, using=self._db)
 
     def get_all_words_by_language(self, iso1='en'):
         """Return the fetch_word QuerySet object.

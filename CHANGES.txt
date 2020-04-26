@@ -1,6 +1,7 @@
 Release Summary
 
-
+1.4, April 26, 2020
+     completed the category model, serializer, views and unitesting.
 1.3, April 4, 2020
      completed the Spanglish Words v1 unitesting.
 1.2, March 20, 2020

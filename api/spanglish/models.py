@@ -11,20 +11,41 @@ or field names.
 """
 
 from django.db import models
-from .managers import WordsManager
-
+from .managers.word_managers import WordManager
 
 APP_LABEL = 'spanglish'
 
 
+class Language(models.Model):
+    """Language of the translated spanish word."""
+
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', unique=True, max_length=45)
+    iso1 = models.CharField(db_column='ISO1', max_length=45)
+    added = models.DateTimeField(auto_now_add=True, db_column='Added', \
+                                 blank=True, null=True)
+
+    class Meta:
+        """additional settings for the Language object."""
+
+        managed = False
+        db_table = 'Language'
+        app_label = APP_LABEL
+
+    def __str__(self):
+        """returns a string representing the object."""
+
+        return str(self.id) + ' ' + self.name + ' ' + self.iso1 + ' ' \
+               + str(self.added)
+
+
 class Category(models.Model):
     """Category types of the words or sentences.
-
     for example Verb, Months, Days etc.
     """
 
     id = models.AutoField(db_column='Id', primary_key=True)
-    created = models.DateTimeField(db_column='Created')
+    created = models.DateTimeField(auto_now_add=True, db_column='Created')
     name = models.CharField(db_column='Name', unique=True, max_length=45)
 
     class Meta:
@@ -34,21 +55,13 @@ class Category(models.Model):
         db_table = 'Category'
         app_label = APP_LABEL
 
+    def __str__(self):
+        """returns a string representing the object."""
 
-class Language(models.Model):
-    """Language of the translated spanish word."""
+        return str(self.id) + ' ' + self.name + ' ' + str(self.created)
 
-    id = models.AutoField(db_column='Id', primary_key=True)
-    name = models.CharField(db_column='Name', unique=True, max_length=45)
-    iso1 = models.CharField(db_column='ISO1', max_length=45)
-    added = models.DateTimeField(db_column='Added', blank=True, null=True)
-
-    class Meta:
-        """additional settings for the Language object."""
-
-        managed = False
-        db_table = 'Language'
-        app_label = APP_LABEL
+    # define category manager
+    objects = models.Manager()
 
 
 class Sentence(models.Model):
@@ -58,7 +71,7 @@ class Sentence(models.Model):
     sentence = models.CharField(db_column='Sentence', max_length=255)
     categoryid = models.IntegerField(db_column='CategoryId',
                                      blank=False, null=False)
-    added = models.DateTimeField(db_column='Added')
+    added = models.DateTimeField(auto_now_add=True, db_column='Added')
 
     class Meta:
         """additional settings for the Sentence object."""
@@ -66,6 +79,12 @@ class Sentence(models.Model):
         managed = False
         db_table = 'Sentence'
         app_label = APP_LABEL
+
+    def __str__(self):
+        """returns a string representing the object."""
+
+        return str(self.id) + ' ' + self.sentence + ' ' \
+               + str(self.categoryid) + ' ' + str(self.added)
 
 
 class Translation(models.Model):
@@ -76,7 +95,7 @@ class Translation(models.Model):
     wordid = models.IntegerField(db_column='WordId', blank=True, null=True)
     sentenceid = models.IntegerField(db_column='SentenceId',
                                      blank=True, null=True)
-    added = models.DateTimeField(db_column='Added')
+    added = models.DateTimeField(auto_now_add=True, db_column='Added')
     translation = models.CharField(db_column='Translation', max_length=255)
 
     class Meta:
@@ -88,6 +107,13 @@ class Translation(models.Model):
                            ('sentenceid', 'translation'),)
         app_label = APP_LABEL
 
+    def __str__(self):
+        """returns a string representing the object."""
+
+        return str(self.id) + ' ' + str(self.languageid) + ' ' \
+               + str(self.wordid) + ' ' +str(self.sentenceid) + \
+               ' ' + self.translation + ' ' + str(self.added)
+
 
 class Verb(models.Model):
     """Verb object which is related to the word of category type verb."""
@@ -97,7 +123,7 @@ class Verb(models.Model):
     verb = models.CharField(db_column='Verb', max_length=45)
     tense = models.CharField(db_column='Tense', max_length=7)
     pronouns = models.CharField(db_column='Pronouns', max_length=15)
-    added = models.DateTimeField(db_column='Added')
+    added = models.DateTimeField(auto_now_add=True, db_column='Added')
 
     class Meta:
         """additional settings for the Verb object."""
@@ -107,6 +133,13 @@ class Verb(models.Model):
         unique_together = (('wordid', 'pronouns'),)
         app_label = APP_LABEL
 
+    def __str__(self):
+        """returns a string representing the object."""
+
+        return str(self.id) + ' ' + str(self.wordid) + ' ' \
+               + self.verb + ' ' + self.tense + \
+               ' ' + self.pronouns + ' ' + str(self.added)
+
 
 class Word(models.Model):
     """The word object that contains a category type."""
@@ -114,7 +147,7 @@ class Word(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)
     word = models.CharField(db_column='Word', unique=True, max_length=45)
     categoryid = models.IntegerField(db_column='CategoryId')
-    added = models.DateTimeField(db_column='Added')
+    added = models.DateTimeField(auto_now_add=True, db_column='Added')
 
     class Meta:
         """additional settings for the Word object."""
@@ -123,5 +156,12 @@ class Word(models.Model):
         db_table = 'Word'
         app_label = APP_LABEL
 
+    def __str__(self):
+        """returns a string representing the object."""
+
+        return str(self.id) + ' ' + str(self.word) + ' ' \
+               + str(self.categoryid) + ' ' + str(self.added)
+
+    # defined object managers
     objects = models.Manager()
-    words = WordsManager()
+    words = WordManager()

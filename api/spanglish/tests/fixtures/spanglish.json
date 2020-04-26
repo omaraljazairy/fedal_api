@@ -16,11 +16,28 @@
     }
 },
 {
+    "model": "spanglish.category",
+    "pk": 3,
+    "fields": {
+        "created": "2020-03-17T19:33:51Z",
+        "name": "days"
+    }
+},
+{
     "model": "spanglish.language",
     "pk": 1,
     "fields": {
         "name": "English",
         "iso1": "en",
+        "added": "2020-03-15T13:35:51Z"
+    }
+},
+{
+    "model": "spanglish.language",
+    "pk": 2,
+    "fields": {
+        "name": "Dutch",
+        "iso1": "nl",
         "added": "2020-03-15T13:35:51Z"
     }
 },

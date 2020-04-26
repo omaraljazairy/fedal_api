@@ -38,7 +38,7 @@ def read(fname):
 
 setup(
     name='FedalRestfulAPI',
-    version='1.3',
+    version='1.4',
     description='private resutful api',
     author='Omar Aljazairy',
     author_email='omar@fedal.nl',

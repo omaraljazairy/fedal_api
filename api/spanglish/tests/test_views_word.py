@@ -107,8 +107,8 @@ class WordListViewTestClass(TestCase):
 
 
     def test_get_language_error_with_no_en_404(self):
-        """test the get request to the api, expects 404 response with
-        content."""
+        """test the get request to the api without providing the
+        language para, expects 404 response with content."""
 
         # set the url for the api with param
         uri = self.api_url + 'language/'

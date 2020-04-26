@@ -2,14 +2,14 @@
 
 from django.test import TestCase
 from ..models import Word
-from ..managers import WordsManager
+from ..managers.word_managers import WordManager
 import logging
 
 LOGGER = logging.getLogger('spanglish')
 
 
 class WordsManagerTestClass(TestCase):
-    """Test the WordsManager class."""
+    """Test the WordManager class."""
 
     @classmethod
     def setUpClass(cls):
@@ -64,14 +64,14 @@ class WordsManagerTestClass(TestCase):
         directly, expect to get the same result as providing
         the en parameter.
         """
-        manager = WordsManager()
-        data = WordsManager.get_all_words_by_language(manager)
+        manager = WordManager()
+        data = WordManager.get_all_words_by_language(manager)
         records = []
         for d in data:
             records.append(d.word)
 
         self.assertTrue(len(records) == 1)
-        self.assertTrue(WordsManager.__dict__['get_all_words_by_language'])
+        self.assertTrue(WordManager.__dict__['get_all_words_by_language'])
 
 
     @classmethod

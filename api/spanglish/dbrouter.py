@@ -23,7 +23,7 @@ class DBRouter(object):
     def db_for_write(self, model, **hints):
         """Attempt to write spanglish models go to Spanglish db."""
         if model._meta.app_label == APP_LABEL:
-            return None
+            return DB
         return None
 
     def allow_relation(self, obj1, obj2, **hints):
