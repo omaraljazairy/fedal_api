@@ -10,7 +10,7 @@ import pytz
 import logging
 from django.conf import settings
 
-LOGGER = logging.getLogger("spanglish")
+logger = logging.getLogger("spanglish")
 otz = pytz.timezone('Europe/Amsterdam')
 
 
@@ -33,8 +33,8 @@ class WordQuerySet(models.QuerySet):
         join " + settings.DATABASE_RAW_TABLES['language'] + "\
         as l on (LanguageId = l.Id) where ISO1 = %s;"
 
-        # LOGGER.debug("fetch word called with iso1: %s" % iso1)
-        # LOGGER.debug("fetch word called with sql: %s" % sql)
+        # logger.debug("fetch word called with iso1: %s" % iso1)
+        # logger.debug("fetch word called with sql: %s" % sql)
 
         translations = {
             'word': 'word',
@@ -45,7 +45,7 @@ class WordQuerySet(models.QuerySet):
         from spanglish.models import Word
         result = Word.words.raw(sql, params, translations)
 
-        # LOGGER.debug("result returned: %s" % result)
+        # logger.debug("result returned: %s" % result)
 
         return result
 
@@ -66,6 +66,6 @@ class WordManager(models.Manager):
         takes the iso1 as a parameter, in this case the default value is en
         """
         data = self.get_queryset().fetch_words(iso1=iso1)
-        # LOGGER.debug("data returned %s" % data)
+        # logger.debug("data returned %s" % data)
 
         return data

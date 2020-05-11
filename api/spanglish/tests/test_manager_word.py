@@ -5,8 +5,7 @@ from ..models import Word
 from ..managers.word_managers import WordManager
 import logging
 
-LOGGER = logging.getLogger('spanglish')
-
+logger = logging.getLogger('spanglish')
 
 class WordsManagerTestClass(TestCase):
     """Test the WordManager class."""
@@ -14,12 +13,13 @@ class WordsManagerTestClass(TestCase):
     @classmethod
     def setUpClass(cls):
         """Run at the start of the test of this class."""
-        LOGGER.debug("setUpClass started")
+        logger.debug("setUpClass started")
 
     def test_get_word_object_instance(self):
         """Call the get_all_words_by_language and expect to
         get back a Word object instance.
         """
+
 
         data = Word.words.get_all_words_by_language()
 
@@ -41,7 +41,7 @@ class WordsManagerTestClass(TestCase):
         for d in data:
             records.append(d.word)
 
-        LOGGER.debug("records: %s" % records)
+        logger.debug("records: %s" % records)
 
         self.assertTrue(len(records) == 1)
 
@@ -55,7 +55,7 @@ class WordsManagerTestClass(TestCase):
         for d in data:
             records.append(d.word)
 
-        LOGGER.debug("records: %s" % records)
+        logger.debug("records: %s" % records)
 
         self.assertTrue(len(records) == 1)
 
@@ -77,4 +77,4 @@ class WordsManagerTestClass(TestCase):
     @classmethod
     def tearDownClass(cls):
         """Run after all tests are done."""
-        LOGGER.debug("tearDownClass started")
+        logger.debug("tearDownClass started")

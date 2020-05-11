@@ -21,7 +21,8 @@ class Language(models.Model):
 
     id = models.AutoField(db_column='Id', primary_key=True)
     name = models.CharField(db_column='Name', unique=True, max_length=45)
-    iso1 = models.CharField(db_column='ISO1', max_length=45)
+    iso1 = models.CharField(db_column='ISO1', blank=False, null=True, \
+                            max_length=45)
     added = models.DateTimeField(auto_now_add=True, db_column='Added', \
                                  blank=True, null=True)
 
@@ -35,7 +36,7 @@ class Language(models.Model):
     def __str__(self):
         """returns a string representing the object."""
 
-        return str(self.id) + ' ' + self.name + ' ' + self.iso1 + ' ' \
+        return str(self.id) + ' ' + self.name + ' ' + str(self.iso1) + ' ' \
                + str(self.added)
 
 

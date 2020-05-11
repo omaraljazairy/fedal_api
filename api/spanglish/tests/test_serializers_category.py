@@ -5,7 +5,7 @@ from ..serializers import CategorySerializer
 from ..models import Category
 import logging
 
-LOGGER = logging.getLogger('spanglish')
+logger = logging.getLogger('spanglish')
 
 
 class CategorySerializerTestClass(TestCase):
@@ -25,7 +25,7 @@ class CategorySerializerTestClass(TestCase):
 
         serialized_keys = list(serializer[0].keys())
         expected_keys = sorted(['id', 'name', 'created'])
-        LOGGER.debug("serialized data category: %s " % serialized_keys)
+        logger.debug("serialized data category: %s " % serialized_keys)
 
         self.assertEquals(sorted(serialized_keys), expected_keys)
 

@@ -19,7 +19,6 @@ djangorestframework-simplejwt==3.2.3
 dnspython==1.16.0
 docutils==0.14
 entrypoints==0.3
-Fedal-Restful-API==3.0
 flake8==3.7.9
 httpie==0.9.9
 idna==2.6
@@ -54,3 +53,4 @@ social-auth-core==3.2.0
 tornado==6.0.4
 uritemplate==3.0.1
 urllib3==1.25.8
+mysqlclient==1.4.6

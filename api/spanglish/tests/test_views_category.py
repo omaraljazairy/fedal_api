@@ -184,6 +184,20 @@ class CategoryViewTestClass(TestCase):
 
         self.assertEquals(201, status_code)
 
+    def test_create_existing_category_400(self):
+        """post an existing category"""
+
+        data = {'name':'verb'}
+        response = self.api_client.post(self.api_url, data=data)
+        status_code = response.status_code
+        content = response.json()
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(400, status_code)
+        self.assertEquals({'name': ['category with this name already exists.']}, content)
+
 
     def test_put_category_200(self):
         """update a category by calling the put action. expects response 200"""

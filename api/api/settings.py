@@ -77,7 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api.wsgi.application'
 
-# Logger
+# logger
 
 LOGGING = {
     'version': 1,

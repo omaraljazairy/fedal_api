@@ -1,7 +1,10 @@
 """Serialize the Spanglish models."""
 
-from .models import Word, Category
+from .models import Word, Category, Language
 from rest_framework import serializers
+import logging
+
+logger = logging.getLogger('spanglish')
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -11,6 +14,22 @@ class CategorySerializer(serializers.ModelSerializer):
         """Specify the model to use and the fields to serialize."""
 
         model = Category
+        fields = '__all__'
+
+
+class LanguageSerializer(serializers.ModelSerializer):
+    """Serialized the Language object."""
+
+    iso1 = serializers.CharField(allow_blank=False, required=True, allow_null=True)
+
+    def validate_empty_values(self, data):
+        logger.debug("language serialized data validation %s" % data)
+        return False
+
+    class Meta:
+        """Specify the model to use and the fields to serialize."""
+
+        model = Language
         fields = '__all__'
 
 

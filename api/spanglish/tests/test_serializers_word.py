@@ -5,7 +5,7 @@ from ..serializers import WordSerializer
 from ..models import Word
 import logging
 
-LOGGER = logging.getLogger('spanglish')
+logger = logging.getLogger('spanglish')
 
 
 class WordSerializerTestClass(TestCase):
@@ -25,7 +25,7 @@ class WordSerializerTestClass(TestCase):
 
         serialized_keys = list(serializer[0].keys())
         expected_keys = sorted(['word', 'category', 'translation', 'language'])
-        LOGGER.debug("serialized data word: %s " % serialized_keys)
+        logger.debug("serialized data word: %s " % serialized_keys)
 
         self.assertEquals(sorted(serialized_keys), expected_keys)
 

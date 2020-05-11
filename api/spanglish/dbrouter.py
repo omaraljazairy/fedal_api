@@ -6,7 +6,7 @@ than other apps.
 
 import logging
 
-LOGGER = logging.getLogger('spanglish')
+logger = logging.getLogger('spanglish')
 APP_LABEL = 'spanglish'
 DB = 'spanglish'
 
