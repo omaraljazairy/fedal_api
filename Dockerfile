@@ -2,13 +2,13 @@ FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /fedalapi
+RUN mkdir /fedal_api
 
-WORKDIR /fedalapi
+WORKDIR /fedal_api
 
-COPY . /fedalapi
+COPY . /fedal_api
 
-ADD ./ /fedalapi/
+ADD ./ /fedal_api/
 
 RUN python -m pip install --upgrade pip && python -m pip install -r requirements.txt
 
