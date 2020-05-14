@@ -179,12 +179,12 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_THROTTLE_CLASSES': (
         'rest_framework.throttling.AnonRateThrottle',
-        'api.throttles.SpanglishRateThrottle',
+        # 'api.throttles.SpanglishRateThrottle',
     ),
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/day',
         'user': '100/day',
-        'spanglish': '100/day',
+        # 'spanglish': '100/day',
     }
 }
 

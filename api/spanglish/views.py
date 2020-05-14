@@ -22,8 +22,8 @@ class CategoryViews(viewsets.ModelViewSet):
     the views of the category. all standard CRUD operations."""
 
     permissions_classes = (IsAuthenticatedOrReadOnly, )
-    throttle_classes = (SpanglishRateThrottle, )
-    throttle_scope = 'spanglish'
+    # throttle_classes = (SpanglishRateThrottle, )
+    # throttle_scope = 'spanglish'
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     name = 'category-list'
@@ -33,8 +33,8 @@ class WordListView(generics.ListAPIView):
     """Containes the get request only for the Words."""
 
     permissions_classes = (IsAuthenticatedOrReadOnly, )
-    throttle_classes = (SpanglishRateThrottle, )
-    throttle_scope = 'spanglish'
+    # throttle_classes = (SpanglishRateThrottle, )
+    # throttle_scope = 'spanglish'
     name = "words-list"
     queryset = Word.objects.all()
 
