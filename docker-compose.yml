@@ -1,10 +1,28 @@
 version: '3'
 
 services:
-    web:
+    api:
         build: .
-        command: python api/manage.py runserver 0.0.0.0:8001
-        ports:
-            - "8001:8001"
+        # command: python api/manage.py runserver 0.0.0.0:8001
+        # command: gunicorn --chdir api --bind :8001 api.wsgi:application
+        # ports:
+        #    - "8001:8001"
         volumes: 
             - .:/fedal_api
+        networks:
+            - nginx_network
+
+    nginx:
+        image: nginx:1.13
+        ports:
+            - "8001:80"
+        volumes:
+            - ./config/nginx/conf.d:/etc/nginx/conf.d
+        depends_on:
+            - api
+        networks:
+            - nginx_network
+
+networks:
+    nginx_network:
+        driver: bridge
