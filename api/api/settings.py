@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'spanglish'
+    'spanglish',
+    'wipecardetailing'
 ]
 
 MIDDLEWARE = [
@@ -108,6 +109,11 @@ LOGGING = {
             'level': LEVEL,
             'propagate': True,
         },
+        'wipecardetailing': {
+            'handlers': ['file'],
+            'level': LEVEL,
+            'propagate': True,
+        },
     },
 }
 
@@ -131,6 +137,14 @@ DATABASES = {
         'PASSWORD': env.DB['PASSWORD'],
         'HOST': env.DB['HOST'],
         'PORT': env.DB['PORT'],
+    },
+    'wipecardetailing': {
+        'ENGINE': env.DB['ENGINE'],
+        'NAME': 'Wipecardetailing',
+        'USER': env.DB['USER'],
+        'PASSWORD': env.DB['PASSWORD'],
+        'HOST': env.DB['HOST'],
+        'PORT': env.DB['PORT'],
     }
 }
 
@@ -141,11 +155,14 @@ DATABASE_RAW_TABLES = {
     "sentence": "Spanglish.Sentence",
     "translation": "Spanglish.Translation",
     "verb": "Spanglish.Verb",
-    "word": "Spanglish.Word"
+    "word": "Spanglish.Word",
+    "formsubmit": "Wipecardetailing.FormSubmits",
+    "multimedia": "Wipecardetailing.Multimedia",
 }
 
 DATABASE_ROUTERS = [
     'spanglish.dbrouter.DBRouter',
+    'wipecardetailing.dbrouter.DBRouter',
 ]
 
 # Password validation
