@@ -1,0 +1,459 @@
+[24/Jul/2020 11:14:35] DEBUG [29151:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:14:35] DEBUG [29151:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:14:35] DEBUG [29151:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:14:35] DEBUG [29151:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:14:35] DEBUG [29151:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:14:36.143617+00:00
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:14:36.326335+00:00
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:14:36.730093+00:00
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:14:36.730093+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:14:36] DEBUG [29151:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:14:37] DEBUG [29151:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:14:37] DEBUG [29151:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:14:37] DEBUG [29151:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:14:37] DEBUG [29151:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:14:38] DEBUG [29151:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:14:38] DEBUG [29151:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:14:40.129258+02:00', 'name': 'foo'}
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:14:40] DEBUG [29151:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:14:41] DEBUG [29151:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:14:41] DEBUG [29151:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:14:41] DEBUG [29151:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:14:41] DEBUG [29151:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:14:42] DEBUG [29151:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:14:42] DEBUG [29151:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:14:42] DEBUG [29151:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:14:43] DEBUG [29151:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:14:44] DEBUG [29151:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:15:24] DEBUG [29154:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:15:24.856976+00:00
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:15:25.028946+00:00
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:15:25.429487+00:00
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:15:25.429487+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:15:25] DEBUG [29154:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:15:26] DEBUG [29154:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:15:26] DEBUG [29154:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:15:26] DEBUG [29154:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:15:26] DEBUG [29154:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:15:28.109890+02:00', 'name': 'foo'}
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:15:28] DEBUG [29154:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:15:29] DEBUG [29154:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:15:29] DEBUG [29154:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:15:29] DEBUG [29154:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:15:29] DEBUG [29154:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:15:30] DEBUG [29154:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:15:30] DEBUG [29154:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:15:30] DEBUG [29154:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:15:30] DEBUG [29154:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:15:30] DEBUG [29154:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:15:31] DEBUG [29154:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:16:21] DEBUG [18:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:16:22] DEBUG [18:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:16:22] DEBUG [18:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:16:22] DEBUG [18:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:16:22] DEBUG [18:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:16:23.174796+00:00
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:16:23.342462+00:00
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:16:23.746186+00:00
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:16:23.746186+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:16:23] DEBUG [18:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:16:24] DEBUG [18:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:16:24] DEBUG [18:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:16:24] DEBUG [18:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:16:24] DEBUG [18:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:16:25] DEBUG [18:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:16:25] DEBUG [18:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:16:26] DEBUG [18:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:16:26] DEBUG [18:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:16:26.627856+02:00', 'name': 'foo'}
+[24/Jul/2020 11:16:26] DEBUG [18:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:16:26] DEBUG [18:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:16:27] DEBUG [18:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:16:28] DEBUG [18:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:16:29] DEBUG [18:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:16:29] DEBUG [18:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:16:29] DEBUG [18:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:16:29] DEBUG [18:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:16:30] DEBUG [18:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:17:50] DEBUG [19:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:17:51.532781+00:00
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:17:51.706522+00:00
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:17:51] DEBUG [19:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:17:52] DEBUG [19:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:17:52.073551+00:00
+[24/Jul/2020 11:17:52] DEBUG [19:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:17:52.073551+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:17:52] DEBUG [19:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:17:52] DEBUG [19:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:17:52] DEBUG [19:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:17:53] DEBUG [19:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:17:53] DEBUG [19:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:17:53] DEBUG [19:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:17:53] DEBUG [19:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:17:54] DEBUG [19:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:17:54] DEBUG [19:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:17:54.574139+02:00', 'name': 'foo'}
+[24/Jul/2020 11:17:54] DEBUG [19:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:17:54] DEBUG [19:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:17:55] DEBUG [19:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:17:56] DEBUG [19:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:17:57] DEBUG [19:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:17:58] DEBUG [19:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:17:58] DEBUG [19:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:17:58] DEBUG [19:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:17:58] DEBUG [19:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:17:58] DEBUG [19:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:17:58] DEBUG [19:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:19:11.891931+00:00
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:19:11.924971+00:00
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:19:11] DEBUG [20:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:19:11.971561+00:00
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:19:11.971561+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:19:12] DEBUG [20:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:19:13.300353+02:00', 'name': 'foo'}
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:19:13] DEBUG [20:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:19:14] DEBUG [20:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:20:22] DEBUG [22:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:20:22.943881+00:00
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:20:22.978386+00:00
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:20:23.024697+00:00
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:20:23.024697+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:20:23] DEBUG [22:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:20:24.281673+02:00', 'name': 'foo'}
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:20:24] DEBUG [22:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:20:25] DEBUG [22:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:20:25] DEBUG [22:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:20:25] DEBUG [22:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:20:25] DEBUG [22:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:20:26] DEBUG [22:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:21:17.466639+00:00
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:21:17.519590+00:00
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:21:17.572325+00:00
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:21:17.572325+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:21:17] DEBUG [23:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:21:18] DEBUG [23:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:21:18] DEBUG [23:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:21:18] DEBUG [23:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:21:18] DEBUG [23:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:21:18.800063+02:00', 'name': 'foo'}
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:21:19] DEBUG [23:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:21:20] DEBUG [23:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 09:32:32.454626+00:00
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 09:32:32.511148+00:00
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 09:32:32.617817+00:00
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 09:32:32.617817+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 11:32:32] DEBUG [28:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 11:32:33] DEBUG [28:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 11:32:33] DEBUG [28:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 11:32:33] DEBUG [28:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 11:32:33] DEBUG [28:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T11:32:34.311131+02:00', 'name': 'foo'}
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 11:32:34] DEBUG [28:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 11:32:35] DEBUG [28:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 11:32:36] DEBUG [28:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_get_all_words_by_iso1:44] records: ['Hablar']
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_get_all_words_by_iso1_default_value:58] records: ['Hablar']
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [tearDownClass:80] tearDownClass started
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [setUpClass:16] setUpClass started
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_applabel_language_spanglish:50] applabel: spanglish
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_create_language_object_success:22] language_fr created 3 French fr 2020-07-24 20:34:15.296730+00:00
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_create_language_without_iso1:39] language se created: 4 Swedish None 2020-07-24 20:34:15.374238+00:00
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_get_language_en:30] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_get_language_en:31] language_en iso1: en
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [tearDownClass:57] tearDownClass started
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data category: ['id', 'created', 'name'] 
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_language_creation_iso_empty:38] language create: 5 Danish None 2020-07-24 20:34:15.480566+00:00
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_language_creation_iso_empty:39] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-24 20:34:15.480566+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_language_serialized_object_with_expected_keys:28] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [test_get_serialized_object_with_expected_keys:28] serialized data word: ['word', 'translation', 'category', 'language'] 
+[24/Jul/2020 22:34:15] DEBUG [32328:spanglish]             [setUpClass:21] CategoryViewTestClass started 
+[24/Jul/2020 22:34:16] DEBUG [32328:spanglish]             [setUpClass:58] user created: tester
+[24/Jul/2020 22:34:16] DEBUG [32328:spanglish]             [setUpClass:59] user2 created: tester2
+[24/Jul/2020 22:34:16] DEBUG [32328:spanglish]             [setUpClass:64] group: Spanglish created: True
+[24/Jul/2020 22:34:16] DEBUG [32328:spanglish]             [setUpClass:65] group2: Spanglish2 created: True
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_create_category_201:182] response: <Response status_code=201, "application/json">
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_create_category_201:183] content: {'id': 4, 'created': '2020-07-24T22:34:18.042877+02:00', 'name': 'foo'}
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_create_existing_category_400:195] response: <Response status_code=400, "application/json">
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_create_existing_category_400:196] content: {'name': ['category with this name already exists.']}
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_delete_category_204:222] response: <Response status_code=204>
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_get_all_categories_200:109] response: <Response status_code=200, "application/json">
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_get_categories_unauthorized_401:128] response: <Response status_code=401, "application/json">
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_get_categories_unauthorized_401:129] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_get_category_error_with_unknow_param_404:144] response: <Response status_code=404, "application/json">
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_get_category_with_content:160] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_put_category_200:210] response: <Response status_code=200, "application/json">
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [test_put_category_200:211] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[24/Jul/2020 22:34:18] DEBUG [32328:spanglish]             [setUpClass:19] WordListViewTestClass started 
+[24/Jul/2020 22:34:19] DEBUG [32328:spanglish]             [setUpClass:38] user created: tester
+[24/Jul/2020 22:34:19] DEBUG [32328:spanglish]             [setUpClass:39] user2 created: tester2
+[24/Jul/2020 22:34:19] DEBUG [32328:spanglish]             [setUpClass:44] group: Spanglish created: True
+[24/Jul/2020 22:34:19] DEBUG [32328:spanglish]             [setUpClass:45] group2: Spanglish2 created: True
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [test_get_language_en_200:85] response: <Response status_code=200, "application/json">
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [get:43] iso1 param received: en
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [get:49] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [test_get_language_en_content:133] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [test_get_language_en_unauthorized_401:102] response: <Response status_code=401, "application/json">
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [test_get_language_en_unauthorized_401:103] response content: {'detail': 'Authentication credentials were not provided.'}
+[24/Jul/2020 22:34:20] DEBUG [32328:spanglish]             [test_get_language_error_with_no_en_404:118] response: <HttpResponseNotFound status_code=404, "text/html">
