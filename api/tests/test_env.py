@@ -23,16 +23,6 @@ DB = {
 
 }
 
-DB2 = {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'api',
-    'USER': 'tester',
-    'PASSWORD': 'Corona_2020',
-    'HOST': 'fedal.nl',
-    'PORT': 3306
-
-}
-
 
 REDIS_LOCATION = 'redis://192.168.192.26:6379/0'
 REDIS_PASSWORD = 'mytestpass'

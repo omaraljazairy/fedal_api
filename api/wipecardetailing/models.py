@@ -15,18 +15,21 @@ APP_LABEL = 'wipecardetailing'
 
 class Formsubmits(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    formname = models.CharField(db_column='FormName', max_length=45)  # Field name made lowercase.
+    formname = models.CharField(db_column='FormName', max_length=45, error_messages={'required': 'missing formname'})  # Field name made lowercase.
     companyname = models.CharField(db_column='CompanyName', max_length=45, blank=True, null=True)  # Field name made lowercase.
     customername = models.CharField(db_column='CustomerName', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    phonenumber = models.CharField(max_length=45, blank=True, null=True)
-    streetname = models.CharField(db_column='Streetname', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    housenumber = models.CharField(db_column='Housenumber', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    email = models.EmailField(db_column='Email', max_length=45, error_messages={
+        'required': 'email is required',
+        'invalid': 'Invalid email'
+    })  # Field name made lowercase.
+    phonenumber = models.CharField(db_column='PhoneNr', max_length=45, blank=True, null=True)
+    streetname = models.CharField(db_column='Street', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    housenumber = models.CharField(db_column='HouseNr', max_length=45, blank=True, null=True)  # Field name made lowercase.
     postcode = models.CharField(db_column='Postcode', max_length=45, blank=True, null=True)  # Field name made lowercase.
     city = models.CharField(db_column='City', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    message = models.CharField(db_column='Message', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    submitted = models.DateTimeField(db_column='Submitted')  # Field name made lowercase.
-    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+    message = models.TextField(db_column='Message', max_length=254, blank=True, null=True)  # Field name made lowercase.
+    submitted = models.DateTimeField(auto_now_add=True, db_column='Submitted')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status', error_messages={'required': 'Status field is required'})  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -37,8 +40,8 @@ class Multimedia(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
     title = models.CharField(db_column='Title', max_length=45)  # Field name made lowercase.
     type = models.CharField(db_column='Type', max_length=15)  # Field name made lowercase.
-    addbyuser = models.CharField(db_column='AddByUser', max_length=45)  # Field name made lowercase.
-    added = models.DateTimeField(db_column='Added')  # Field name made lowercase.
+    addedbyuser = models.CharField(db_column='AddedByUser', max_length=45)  # Field name made lowercase.
+    added = models.DateTimeField(auto_now_add=True, db_column='Added')  # Field name made lowercase.
     link = models.CharField(db_column='Link', unique=True, max_length=255)  # Field name made lowercase.
     socialmedianame = models.CharField(db_column='SocialMediaName', max_length=45, blank=True, null=True)  # Field name made lowercase.
 

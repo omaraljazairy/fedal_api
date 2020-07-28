@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_nose',
     'spanglish',
+    'wipecardetailing',
 ]
 
 
@@ -84,6 +85,11 @@ LOGGING = {
     },
     'loggers': {
         'spanglish': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'wipecardetailing': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
@@ -134,6 +140,14 @@ DATABASES = {
         'PASSWORD': test_env.DB['PASSWORD'],
         'HOST': test_env.DB['HOST'],
         'PORT': test_env.DB['PORT']
+    },
+    'wipecardetailing': {
+        'ENGINE': test_env.DB['ENGINE'],
+        'NAME': test_env.DB['NAME'],
+        'USER': test_env.DB['USER'],
+        'PASSWORD': test_env.DB['PASSWORD'],
+        'HOST': test_env.DB['HOST'],
+        'PORT': test_env.DB['PORT']
     }
 }
 
@@ -143,11 +157,14 @@ DATABASE_RAW_TABLES = {
     "sentence": "Sentence",
     "translation": "Translation",
     "verb": "Verb",
-    "word": "Word"
+    "word": "Word",
+    "formsubmit": "FormSubmits",
+    "multimedia": "Multimedia",
 }
 
 DATABASE_ROUTERS = [
     'spanglish.dbrouter.DBRouter',
+    'wipecardetailing.dbrouter.DBRouter',
 ]
 
 # cache server
@@ -220,6 +237,7 @@ REST_FRAMEWORK = {
         'anon': '10000/day',
         'user': '10000/day',
         'spanglish': '10000/min',
+        'wipecardetailing': '10000/min',
     }
 }
 
@@ -249,7 +267,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--cover-erase',
     '--with-coverage',
-    '--cover-package=spanglish',
+    '--cover-package=wipecardetailing,spanglish',
     '--with-xunit',
     '--cover-html',
     '--cover-html-dir=tests/htmlcov',
@@ -262,6 +280,8 @@ NOSE_ARGS = [
 FIXTURES = {
     'spanglish': os.path.join(BASE_DIR,
                               'spanglish/tests/fixtures/spanglish.json'),
+    'wipecardetailing': os.path.join(BASE_DIR,
+                              'wipecardetailing/tests/fixtures/wipecardetailing.json'),
 }
 
 # setup.py sdist --format=zip egg_info --tag-date --tag-build=alpha

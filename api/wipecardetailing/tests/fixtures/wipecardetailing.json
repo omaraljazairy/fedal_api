@@ -1,0 +1,74 @@
+[
+{
+    "model": "wipecardetailing.formsubmits",
+    "pk": 1,
+    "fields": {
+        "formname": "Contact",
+        "companyname": "my company",
+        "customername": "tester",
+        "email": "test@test.com",
+        "phonenumber": "+83747737822",
+        "streetname": "testHero",
+        "housenumber": "33A",
+        "postcode": "1222FF",
+        "city": "Amsterdam",
+        "message": "hello i like to order Cola",
+        "submitted": "2020-07-26T09:42:11Z",
+        "status": 1
+    }
+},
+{
+    "model": "wipecardetailing.formsubmits",
+    "pk": 2,
+    "fields": {
+        "formname": "TankStation",
+        "companyname": "my company2",
+        "customername": "tester2",
+        "email": "test2@test.com",
+        "phonenumber": "+8399999999",
+        "streetname": "Linnaeusstraat",
+        "housenumber": "12",
+        "postcode": "1444FF",
+        "city": "Zaandam",
+        "message": "hello i like to order Coffee",
+        "submitted": "2020-07-26T09:43:38Z",
+        "status": 0
+    }
+},
+{
+    "model": "wipecardetailing.multimedia",
+    "pk": 1,
+    "fields": {
+        "title": "CarWash",
+        "type": "Image",
+        "addedbyuser": "Omar",
+        "added": "2020-07-26T09:55:57Z",
+        "link": "https://fedal.net/carwash.jpg",
+        "socialmedianame": null
+    }
+},
+{
+    "model": "wipecardetailing.multimedia",
+    "pk": 2,
+    "fields": {
+        "title": "CarWash",
+        "type": "SocialMediaLink",
+        "addedbyuser": "Hashim",
+        "added": "2020-07-26T09:57:15Z",
+        "link": "https://youtube.com/wejhsvgerv32vg",
+        "socialmedianame": "youtube"
+    }
+},
+{
+    "model": "wipecardetailing.multimedia",
+    "pk": 3,
+    "fields": {
+        "title": "Tankstation Cleaner",
+        "type": "SocialMediaLink",
+        "addedbyuser": "Mustafa",
+        "added": "2020-07-26T09:58:19Z",
+        "link": "https://facebook.com/wejhsvgerv32vg",
+        "socialmedianame": "facebook"
+    }
+}
+]

@@ -1172,3 +1172,17 @@
 [22/Jul/2020 18:45:23] DEBUG [spanglish:49]              - [views:get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
 [22/Jul/2020 19:10:52] DEBUG [spanglish:43]              - [views:get] iso1 param received: en
 [22/Jul/2020 19:10:52] DEBUG [spanglish:49]              - [views:get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[28/Jul/2020 21:42:17] DEBUG [wipecardetailing:30]              - [views:post] request: <rest_framework.request.Request object at 0x7fe71379e7d0>
+[28/Jul/2020 21:43:07] DEBUG [wipecardetailing:30]              - [views:post] request: <rest_framework.request.Request object at 0x7f9f17861a90>
+[28/Jul/2020 21:43:07] DEBUG [wipecardetailing:32]              - [views:post] kwargs: {}
+[28/Jul/2020 21:44:15] DEBUG [wipecardetailing:30]              - [views:post] request: <QueryDict: {'formname': ['TankStation'], 'companyname': ['google.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl'], 'status': ['1']}>
+[28/Jul/2020 21:44:15] DEBUG [wipecardetailing:31]              - [views:post] kwargs: {}
+[28/Jul/2020 21:58:18] DEBUG [wipecardetailing:31]              - [views:post] request: <QueryDict: {'formname': ['CarParking'], 'companyname': ['foo.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl'], 'status': ['0']}>
+[28/Jul/2020 21:58:18] DEBUG [wipecardetailing:34]              - [views:post] form_saved
+[28/Jul/2020 21:58:36] DEBUG [wipecardetailing:31]              - [views:post] request: <QueryDict: {'formname': ['CarParking'], 'companyname': ['foo.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl']}>
+[28/Jul/2020 22:00:20] DEBUG [wipecardetailing:31]              - [views:post] request: <QueryDict: {'formname': ['CarParking'], 'companyname': ['foo.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl']}>
+[28/Jul/2020 22:00:20] ERROR [wipecardetailing:37]              - [views:post] form save: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[28/Jul/2020 23:25:34] DEBUG [wipecardetailing:35]              - [views:post] request: <QueryDict: {'formname': ['CarParking'], 'companyname': ['foo.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl']}>
+[28/Jul/2020 23:25:34] ERROR [wipecardetailing:41]              - [views:post] form save: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[28/Jul/2020 23:30:58] DEBUG [wipecardetailing:35]              - [views:post] request: <QueryDict: {'formname': ['CarParking'], 'companyname': ['foo.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl']}>
+[28/Jul/2020 23:30:58] ERROR [wipecardetailing:41]              - [views:post] form save: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}

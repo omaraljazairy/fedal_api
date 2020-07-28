@@ -15,3 +15,14 @@ class SpanglishRateThrottle(UserRateThrottle):
 
     logger.debug("throttle for spanglish users")
     scope = 'spanglish'
+
+
+class WipecardetailingRateThrottle(UserRateThrottle):
+    """used for the Wipecardetailing app with.
+
+    Extends the userRateThrottle class and sets a
+    scope attribute to spanglish.
+    """
+
+    logger.debug("throttle for wipecardetailing users")
+    scope = 'wipecardetailing'
