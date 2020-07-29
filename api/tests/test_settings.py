@@ -66,7 +66,7 @@ LOGGING = {
     'formatters': {
         'standard': {
             'format': "[%(asctime)s] %(levelname)s [%(process)d:%(name)s]\
-             [%(funcName)s:%(lineno)s] %(message)s",
+             [%(funcName)s] %(message)s",
             'datefmt': "%d/%b/%Y %H:%M:%S"
         },
     },

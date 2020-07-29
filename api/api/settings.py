@@ -85,7 +85,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'standard': {
-            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] \
+            'format': "[%(asctime)s] %(levelname)s [%(name)s] \
              - [%(module)s:%(funcName)s] %(message)s",
             'datefmt': "%d/%b/%Y %H:%M:%S"
         },

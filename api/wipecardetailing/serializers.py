@@ -14,6 +14,25 @@ class FormSubmitsSerializer(serializers.ModelSerializer):
 
         model = Formsubmits
         fields = '__all__'
+        extra_kwargs = {
+            'status': {
+                'error_messages': {
+                    'required': 'Status field is required'
+                }
+            },
+            'email': {
+                'error_messages': {
+                    'required': 'Email field is required',
+                    'invalid': 'Invalid email'
+                }
+            },
+            'formname': {
+                'error_messages': {
+                    'required': 'Formname field is required'
+                }
+            }
+        }
+
 
 
 class MultimediaSerializer(serializers.ModelSerializer):

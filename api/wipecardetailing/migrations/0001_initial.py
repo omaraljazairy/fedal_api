@@ -15,15 +15,10 @@ class Migration(migrations.Migration):
             name='Formsubmits',
             fields=[
                 ('id', models.AutoField(db_column='Id', primary_key=True, serialize=False)),
-                ('formname', models.CharField(db_column='FormName', max_length=45, error_messages={
-                    'required': 'missing formname'
-                })),
+                ('formname', models.CharField(db_column='FormName', max_length=45)),
                 ('companyname', models.CharField(blank=True, db_column='CompanyName', max_length=45, null=True)),
                 ('customername', models.CharField(blank=True, db_column='CustomerName', max_length=45, null=True)),
-                ('email', models.CharField(db_column='Email', max_length=45, error_messages={
-                    'required': 'email is required',
-                    'error': 'Invalid email'
-                })),  # Field name made lowercase.)),
+                ('email', models.CharField(db_column='Email', max_length=45)),  # Field name made lowercase.)),
                 ('phonenumber', models.CharField(db_column='PhoneNr', blank=True, max_length=45, null=True)),
                 ('streetname', models.CharField(blank=True, db_column='Street', max_length=45, null=True)),
                 ('housenumber', models.CharField(blank=True, db_column='HouseNr', max_length=45, null=True)),
@@ -31,9 +26,7 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(blank=True, db_column='City', max_length=45, null=True)),
                 ('message', models.TextField(blank=True, db_column='Message', max_length=254, null=True)),
                 ('submitted', models.DateTimeField(db_column='Submitted', auto_now_add=True)),
-                ('status', models.IntegerField(db_column='Status', error_messages={
-                    'required': 'missing status'
-                })),
+                ('status', models.SmallIntegerField(db_column='Status')),
             ],
             options={
                 'db_table': 'FormSubmits',

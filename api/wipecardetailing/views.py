@@ -27,16 +27,26 @@ class FormsubmitsView(generics.ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         """override the post because the status value depneds on the email"""
 
-        form_data = request.data
-        required_fields = ('formname', 'email')
-        # if set(form_data.keys()).intersection(required_fields):
-        #     logger.debug('missing required field')
-        #     return Response({'Msg': 'missing required field'}, status=status.HTTP_400_BAD_REQUEST)
-        logger.debug("request: %s" % request.data)
-        serializer = FormSubmitsSerializer(data=form_data)
+        # create a new dict from the request object to append the status value with it.
+        data = {k:v for k,v in request.data.items()}
+        status_data = {'status': 1 }
+
+        logger.debug("request formname: %s", data['formname'])
+        status_data.update(data) # add the status of the email
+
+        logger.debug("request: %s" % status_data)
+        serializer = FormSubmitsSerializer(data=status_data)
         if serializer.is_valid():
-            logger.debug("form_saved")
+            logger.debug("form saved")
             return Response({'Msg': 'OK'}, status=status.HTTP_201_CREATED)
         else:
-            logger.error('form save: %s' % serializer.error_messages)
-            return Response({'Msg': serializer.error_messages['required']}, status=status.HTTP_400_BAD_REQUEST)
+            error = serializer.errors
+            # convert the error to a list to get the message value
+            error_value = list(error.values())
+            err_msg = error_value[0][0]
+
+            logger.error('error message: %s' % error)
+            logger.error('error value: %s' % err_msg)
+            logger.debug('default error message: %s', serializer.error_messages)
+
+            return Response({'Msg': err_msg}, status=status.HTTP_400_BAD_REQUEST)
