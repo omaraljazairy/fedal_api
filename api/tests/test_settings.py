@@ -94,6 +94,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'mail': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     },
 }
 

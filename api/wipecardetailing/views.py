@@ -31,7 +31,6 @@ class FormsubmitsView(generics.ListCreateAPIView):
         data = {k:v for k,v in request.data.items()}
         status_data = {'status': 1 }
 
-        logger.debug("request formname: %s", data['formname'])
         status_data.update(data) # add the status of the email
 
         logger.debug("request: %s" % status_data)

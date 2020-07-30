@@ -114,6 +114,11 @@ LOGGING = {
             'level': LEVEL,
             'propagate': True,
         },
+        'mail': {
+            'handlers': ['file'],
+            'level': LEVEL,
+            'propagate': True,
+        },
     },
 }
 

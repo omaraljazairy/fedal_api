@@ -6780,3 +6780,337 @@
 [29/Jul/2020 23:24:49] DEBUG [24588:wipecardetailing]             [test_post_formsubmit_mising_email_400] response: <Response status_code=400, "application/json">
 [29/Jul/2020 23:24:49] DEBUG [24588:wipecardetailing]             [test_post_formsubmit_mising_email_400] content: {'Msg': 'Email field is required'}
 [29/Jul/2020 23:24:49] DEBUG [24588:wipecardetailing]             [tearDownClass] tearing down formsubmit view tests
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [test_get_all_words_by_iso1] records: ['Hablar']
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [test_get_all_words_by_iso1_default_value] records: ['Hablar']
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [test_applabel_language_spanglish] applabel: spanglish
+[30/Jul/2020 09:09:07] DEBUG [24848:spanglish]             [test_create_language_object_success] language_fr created 3 French fr 2020-07-30 07:09:07.913746+00:00
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_create_language_without_iso1] language se created: 4 Swedish None 2020-07-30 07:09:07.973225+00:00
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_get_language_en] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_get_language_en] language_en iso1: en
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data category: ['id', 'created', 'name'] 
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_language_creation_iso_empty] language create: 5 Danish None 2020-07-30 07:09:08.134034+00:00
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_language_creation_iso_empty] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-30 07:09:08.134034+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_language_serialized_object_with_expected_keys] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data word: ['word', 'translation', 'category', 'language'] 
+[30/Jul/2020 09:09:08] DEBUG [24848:spanglish]             [setUpClass] CategoryViewTestClass started 
+[30/Jul/2020 09:09:09] DEBUG [24848:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:09:09] DEBUG [24848:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:09:09] DEBUG [24848:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:09:09] DEBUG [24848:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_create_category_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_create_category_201] content: {'id': 4, 'created': '2020-07-30T09:09:10.548615+02:00', 'name': 'foo'}
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_create_existing_category_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_create_existing_category_400] content: {'name': ['category with this name already exists.']}
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_delete_category_204] response: <Response status_code=204>
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_get_all_categories_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_get_categories_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_get_categories_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_get_category_error_with_unknow_param_404] response: <Response status_code=404, "application/json">
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_get_category_with_content] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_put_category_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:09:10] DEBUG [24848:spanglish]             [test_put_category_200] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[30/Jul/2020 09:09:11] DEBUG [24848:spanglish]             [setUpClass] WordListViewTestClass started 
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [test_get_language_en_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [test_get_language_en_content] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [test_get_language_en_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:09:12] DEBUG [24848:spanglish]             [test_get_language_en_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:09:13] DEBUG [24848:spanglish]             [test_get_language_error_with_no_en_404] response: <HttpResponseNotFound status_code=404, "text/html">
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [setUpClass] setUpClass started
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_applabel_formsumbit_spanglish] applabel: wipecardetailing
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_create_formsubmits_required_fields_only] formsubmit created Formsubmits object (3)
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_create_formsubmits_required_fields_only] form_submit email: foo@fedal.nl
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_get_formsubmit_formname_contact] formsubmit: Formsubmits object (1)
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_get_formsubmit_formname_contact] form_submit name: Contact
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_Formsubmits_serialized_object_with_expected_keys] serialized data Formsubmits: ['id', 'formname', 'companyname', 'customername', 'email', 'phonenumber', 'streetname', 'housenumber', 'postcode', 'city', 'message', 'submitted', 'status'] 
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [setUpClass] FormsubmitsViewTestClass started 
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_get_3_formsubmits_200] response: application/json
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_get_3_formsubmits_200] response content: [{'id': 1, 'formname': 'Contact', 'companyname': 'my company', 'customername': 'tester', 'email': 'test@test.com', 'phonenumber': '+83747737822', 'streetname': 'testHero', 'housenumber': '33A', 'postcode': '1222FF', 'city': 'Amsterdam', 'message': 'hello i like to order Cola', 'submitted': '2020-07-26T11:42:11+02:00', 'status': 1}, {'id': 2, 'formname': 'TankStation', 'companyname': 'my company2', 'customername': 'tester2', 'email': 'test2@test.com', 'phonenumber': '+8399999999', 'streetname': 'Linnaeusstraat', 'housenumber': '12', 'postcode': '1444FF', 'city': 'Zaandam', 'message': 'hello i like to order Coffee', 'submitted': '2020-07-26T11:43:38+02:00', 'status': 0}, {'id': 3, 'formname': 'Parking', 'companyname': 'my test company', 'customername': None, 'email': 'foo@fedal.nl', 'phonenumber': None, 'streetname': None, 'housenumber': None, 'postcode': None, 'city': None, 'message': None, 'submitted': '2020-07-30T09:09:13.658110+02:00', 'status': 1}]
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] request formname: TanStation
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'email': 'bla@test.com', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] form saved
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_post_formsubmit_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_post_formsubmit_201] content: {'Msg': 'OK'}
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] request formname: TanStation
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co', 'email': 'foobar'}
+[30/Jul/2020 09:09:13] ERROR [24848:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Invalid email', code='invalid')]}
+[30/Jul/2020 09:09:13] ERROR [24848:wipecardetailing]             [post] error value: Invalid email
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_post_formsubmit_invalid_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_post_formsubmit_invalid_email_400] content: {'Msg': 'Invalid email'}
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] request formname: TanStation
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:09:13] ERROR [24848:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Email field is required', code='required')]}
+[30/Jul/2020 09:09:13] ERROR [24848:wipecardetailing]             [post] error value: Email field is required
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_post_formsubmit_mising_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [test_post_formsubmit_mising_email_400] content: {'Msg': 'Email field is required'}
+[30/Jul/2020 09:09:13] DEBUG [24848:wipecardetailing]             [tearDownClass] tearing down formsubmit view tests
+[30/Jul/2020 09:20:08] DEBUG [24937:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:20:08] DEBUG [24937:spanglish]             [test_get_all_words_by_iso1] records: ['Hablar']
+[30/Jul/2020 09:20:08] DEBUG [24937:spanglish]             [test_get_all_words_by_iso1_default_value] records: ['Hablar']
+[30/Jul/2020 09:20:08] DEBUG [24937:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:20:08] DEBUG [24937:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:20:08] DEBUG [24937:spanglish]             [test_applabel_language_spanglish] applabel: spanglish
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_create_language_object_success] language_fr created 3 French fr 2020-07-30 07:20:08.803056+00:00
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_create_language_without_iso1] language se created: 4 Swedish None 2020-07-30 07:20:09.304847+00:00
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_get_language_en] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_get_language_en] language_en iso1: en
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data category: ['id', 'created', 'name'] 
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_language_creation_iso_empty] language create: 5 Danish None 2020-07-30 07:20:09.451674+00:00
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_language_creation_iso_empty] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-30 07:20:09.451674+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_language_serialized_object_with_expected_keys] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data word: ['word', 'translation', 'category', 'language'] 
+[30/Jul/2020 09:20:09] DEBUG [24937:spanglish]             [setUpClass] CategoryViewTestClass started 
+[30/Jul/2020 09:20:10] DEBUG [24937:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:20:10] DEBUG [24937:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:20:10] DEBUG [24937:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:20:10] DEBUG [24937:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_create_category_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_create_category_201] content: {'id': 4, 'created': '2020-07-30T09:20:12.115049+02:00', 'name': 'foo'}
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_create_existing_category_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_create_existing_category_400] content: {'name': ['category with this name already exists.']}
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_delete_category_204] response: <Response status_code=204>
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_get_all_categories_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_get_categories_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_get_categories_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_get_category_error_with_unknow_param_404] response: <Response status_code=404, "application/json">
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_get_category_with_content] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_put_category_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [test_put_category_200] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[30/Jul/2020 09:20:12] DEBUG [24937:spanglish]             [setUpClass] WordListViewTestClass started 
+[30/Jul/2020 09:20:13] DEBUG [24937:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:20:13] DEBUG [24937:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:20:13] DEBUG [24937:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:20:13] DEBUG [24937:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [test_get_language_en_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [test_get_language_en_content] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [test_get_language_en_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [test_get_language_en_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:20:14] DEBUG [24937:spanglish]             [test_get_language_error_with_no_en_404] response: <HttpResponseNotFound status_code=404, "text/html">
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [setUpClass] setUpClass started
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_applabel_formsumbit_spanglish] applabel: wipecardetailing
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_create_formsubmits_required_fields_only] formsubmit created Formsubmits object (3)
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_create_formsubmits_required_fields_only] form_submit email: foo@fedal.nl
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_get_formsubmit_formname_contact] formsubmit: Formsubmits object (1)
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_get_formsubmit_formname_contact] form_submit name: Contact
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_Formsubmits_serialized_object_with_expected_keys] serialized data Formsubmits: ['id', 'formname', 'companyname', 'customername', 'email', 'phonenumber', 'streetname', 'housenumber', 'postcode', 'city', 'message', 'submitted', 'status'] 
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [setUpClass] FormsubmitsViewTestClass started 
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_get_3_formsubmits_200] response: application/json
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_get_3_formsubmits_200] response content: [{'id': 1, 'formname': 'Contact', 'companyname': 'my company', 'customername': 'tester', 'email': 'test@test.com', 'phonenumber': '+83747737822', 'streetname': 'testHero', 'housenumber': '33A', 'postcode': '1222FF', 'city': 'Amsterdam', 'message': 'hello i like to order Cola', 'submitted': '2020-07-26T11:42:11+02:00', 'status': 1}, {'id': 2, 'formname': 'TankStation', 'companyname': 'my company2', 'customername': 'tester2', 'email': 'test2@test.com', 'phonenumber': '+8399999999', 'streetname': 'Linnaeusstraat', 'housenumber': '12', 'postcode': '1444FF', 'city': 'Zaandam', 'message': 'hello i like to order Coffee', 'submitted': '2020-07-26T11:43:38+02:00', 'status': 0}, {'id': 3, 'formname': 'Parking', 'companyname': 'my test company', 'customername': None, 'email': 'foo@fedal.nl', 'phonenumber': None, 'streetname': None, 'housenumber': None, 'postcode': None, 'city': None, 'message': None, 'submitted': '2020-07-30T09:20:15.145157+02:00', 'status': 1}]
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] request formname: TanStation
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'email': 'bla@test.com', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] form saved
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_post_formsubmit_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_post_formsubmit_201] content: {'Msg': 'OK'}
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] request formname: TanStation
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co', 'email': 'foobar'}
+[30/Jul/2020 09:20:15] ERROR [24937:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Invalid email', code='invalid')]}
+[30/Jul/2020 09:20:15] ERROR [24937:wipecardetailing]             [post] error value: Invalid email
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_post_formsubmit_invalid_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_post_formsubmit_invalid_email_400] content: {'Msg': 'Invalid email'}
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] request formname: TanStation
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:20:15] ERROR [24937:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Email field is required', code='required')]}
+[30/Jul/2020 09:20:15] ERROR [24937:wipecardetailing]             [post] error value: Email field is required
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_post_formsubmit_mising_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [test_post_formsubmit_mising_email_400] content: {'Msg': 'Email field is required'}
+[30/Jul/2020 09:20:15] DEBUG [24937:wipecardetailing]             [tearDownClass] tearing down formsubmit view tests
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_get_all_words_by_iso1] records: ['Hablar']
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_get_all_words_by_iso1_default_value] records: ['Hablar']
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_applabel_language_spanglish] applabel: spanglish
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_create_language_object_success] language_fr created 3 French fr 2020-07-30 07:23:56.561403+00:00
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_create_language_without_iso1] language se created: 4 Swedish None 2020-07-30 07:23:56.619853+00:00
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_get_language_en] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_get_language_en] language_en iso1: en
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data category: ['id', 'created', 'name'] 
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_language_creation_iso_empty] language create: 5 Danish None 2020-07-30 07:23:56.849400+00:00
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_language_creation_iso_empty] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-30 07:23:56.849400+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_language_serialized_object_with_expected_keys] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data word: ['word', 'translation', 'category', 'language'] 
+[30/Jul/2020 09:23:56] DEBUG [24985:spanglish]             [setUpClass] CategoryViewTestClass started 
+[30/Jul/2020 09:23:57] DEBUG [24985:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:23:57] DEBUG [24985:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:23:58] DEBUG [24985:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:23:58] DEBUG [24985:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_create_category_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_create_category_201] content: {'id': 4, 'created': '2020-07-30T09:23:59.397878+02:00', 'name': 'foo'}
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_create_existing_category_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_create_existing_category_400] content: {'name': ['category with this name already exists.']}
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_delete_category_204] response: <Response status_code=204>
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_get_all_categories_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_get_categories_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_get_categories_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_get_category_error_with_unknow_param_404] response: <Response status_code=404, "application/json">
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_get_category_with_content] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_put_category_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:23:59] DEBUG [24985:spanglish]             [test_put_category_200] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[30/Jul/2020 09:24:00] DEBUG [24985:spanglish]             [setUpClass] WordListViewTestClass started 
+[30/Jul/2020 09:24:00] DEBUG [24985:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:24:00] DEBUG [24985:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [test_get_language_en_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [test_get_language_en_content] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [test_get_language_en_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [test_get_language_en_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:24:01] DEBUG [24985:spanglish]             [test_get_language_error_with_no_en_404] response: <HttpResponseNotFound status_code=404, "text/html">
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [setUpClass] setUpClass started
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_applabel_formsumbit_spanglish] applabel: wipecardetailing
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_create_formsubmits_required_fields_only] formsubmit created Formsubmits object (3)
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_create_formsubmits_required_fields_only] form_submit email: foo@fedal.nl
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_get_formsubmit_formname_contact] formsubmit: Formsubmits object (1)
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_get_formsubmit_formname_contact] form_submit name: Contact
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_Formsubmits_serialized_object_with_expected_keys] serialized data Formsubmits: ['id', 'formname', 'companyname', 'customername', 'email', 'phonenumber', 'streetname', 'housenumber', 'postcode', 'city', 'message', 'submitted', 'status'] 
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [setUpClass] FormsubmitsViewTestClass started 
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_get_3_formsubmits_200] response: application/json
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_get_3_formsubmits_200] response content: [{'id': 1, 'formname': 'Contact', 'companyname': 'my company', 'customername': 'tester', 'email': 'test@test.com', 'phonenumber': '+83747737822', 'streetname': 'testHero', 'housenumber': '33A', 'postcode': '1222FF', 'city': 'Amsterdam', 'message': 'hello i like to order Cola', 'submitted': '2020-07-26T11:42:11+02:00', 'status': 1}, {'id': 2, 'formname': 'TankStation', 'companyname': 'my company2', 'customername': 'tester2', 'email': 'test2@test.com', 'phonenumber': '+8399999999', 'streetname': 'Linnaeusstraat', 'housenumber': '12', 'postcode': '1444FF', 'city': 'Zaandam', 'message': 'hello i like to order Coffee', 'submitted': '2020-07-26T11:43:38+02:00', 'status': 0}, {'id': 3, 'formname': 'Parking', 'companyname': 'my test company', 'customername': None, 'email': 'foo@fedal.nl', 'phonenumber': None, 'streetname': None, 'housenumber': None, 'postcode': None, 'city': None, 'message': None, 'submitted': '2020-07-30T09:24:02.409638+02:00', 'status': 1}]
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'email': 'bla@test.com', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] form saved
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_201] content: {'Msg': 'OK'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co', 'email': 'foobar'}
+[30/Jul/2020 09:24:02] ERROR [24985:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Invalid email', code='invalid')]}
+[30/Jul/2020 09:24:02] ERROR [24985:wipecardetailing]             [post] error value: Invalid email
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_invalid_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_invalid_email_400] content: {'Msg': 'Invalid email'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:24:02] ERROR [24985:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Email field is required', code='required')]}
+[30/Jul/2020 09:24:02] ERROR [24985:wipecardetailing]             [post] error value: Email field is required
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_mising_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_mising_email_400] content: {'Msg': 'Email field is required'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] request: {'status': 1, 'email': 'foo@bar.com', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:24:02] ERROR [24985:wipecardetailing]             [post] error message: {'formname': [ErrorDetail(string='Formname field is required', code='required')]}
+[30/Jul/2020 09:24:02] ERROR [24985:wipecardetailing]             [post] error value: Formname field is required
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_mising_formname_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [test_post_formsubmit_mising_formname_400] content: {'Msg': 'Formname field is required'}
+[30/Jul/2020 09:24:02] DEBUG [24985:wipecardetailing]             [tearDownClass] tearing down formsubmit view tests
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_get_all_words_by_iso1] records: ['Hablar']
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_get_all_words_by_iso1_default_value] records: ['Hablar']
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [setUpClass] setUpClass started
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_applabel_language_spanglish] applabel: spanglish
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_create_language_object_success] language_fr created 3 French fr 2020-07-30 07:25:18.200878+00:00
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_create_language_without_iso1] language se created: 4 Swedish None 2020-07-30 07:25:18.369687+00:00
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_get_language_en] language_en: 1 English en 2020-03-15 13:35:51+00:00
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_get_language_en] language_en iso1: en
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data category: ['id', 'created', 'name'] 
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_language_creation_iso_empty] language create: 5 Danish None 2020-07-30 07:25:18.458418+00:00
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_language_creation_iso_empty] language serialized: LanguageSerializer(instance=<Language: 5 Danish None 2020-07-30 07:25:18.458418+00:00>):
+    id = IntegerField(read_only=True)
+    iso1 = CharField(allow_blank=False, allow_null=True, required=True)
+    name = CharField(max_length=45, validators=[<UniqueValidator(queryset=Language.objects.all())>])
+    added = DateTimeField(read_only=True)
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_language_serialized_object_with_expected_keys] serialized data language: ['id', 'iso1', 'name', 'added'] 
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [test_get_serialized_object_with_expected_keys] serialized data word: ['word', 'translation', 'category', 'language'] 
+[30/Jul/2020 09:25:18] DEBUG [25008:spanglish]             [setUpClass] CategoryViewTestClass started 
+[30/Jul/2020 09:25:19] DEBUG [25008:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:25:19] DEBUG [25008:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:25:19] DEBUG [25008:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:25:19] DEBUG [25008:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_create_category_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_create_category_201] content: {'id': 4, 'created': '2020-07-30T09:25:21.176809+02:00', 'name': 'foo'}
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_create_existing_category_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_create_existing_category_400] content: {'name': ['category with this name already exists.']}
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_delete_category_204] response: <Response status_code=204>
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_get_all_categories_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_get_categories_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_get_categories_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_get_category_error_with_unknow_param_404] response: <Response status_code=404, "application/json">
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_get_category_with_content] content: {'id': 1, 'created': '2020-03-15T14:29:37+01:00', 'name': 'verb'}
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_put_category_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [test_put_category_200] content: {'id': 2, 'created': '2020-03-16T18:33:51+01:00', 'name': 'bar2'}
+[30/Jul/2020 09:25:21] DEBUG [25008:spanglish]             [setUpClass] WordListViewTestClass started 
+[30/Jul/2020 09:25:22] DEBUG [25008:spanglish]             [setUpClass] user created: tester
+[30/Jul/2020 09:25:22] DEBUG [25008:spanglish]             [setUpClass] user2 created: tester2
+[30/Jul/2020 09:25:22] DEBUG [25008:spanglish]             [setUpClass] group: Spanglish created: True
+[30/Jul/2020 09:25:22] DEBUG [25008:spanglish]             [setUpClass] group2: Spanglish2 created: True
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [test_get_language_en_200] response: <Response status_code=200, "application/json">
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [get] iso1 param received: en
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [get] data returned from serializer: [OrderedDict([('word', 'Hablar'), ('translation', 'Talk'), ('category', 'verb'), ('language', 'English')])]
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [test_get_language_en_content] content: [{'word': 'Hablar', 'translation': 'Talk', 'category': 'verb', 'language': 'English'}]
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [test_get_language_en_unauthorized_401] response: <Response status_code=401, "application/json">
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [test_get_language_en_unauthorized_401] response content: {'detail': 'Authentication credentials were not provided.'}
+[30/Jul/2020 09:25:23] DEBUG [25008:spanglish]             [test_get_language_error_with_no_en_404] response: <HttpResponseNotFound status_code=404, "text/html">
+[30/Jul/2020 09:25:23] DEBUG [25008:wipecardetailing]             [setUpClass] setUpClass started
+[30/Jul/2020 09:25:23] DEBUG [25008:wipecardetailing]             [test_applabel_formsumbit_spanglish] applabel: wipecardetailing
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_create_formsubmits_required_fields_only] formsubmit created Formsubmits object (3)
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_create_formsubmits_required_fields_only] form_submit email: foo@fedal.nl
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_get_formsubmit_formname_contact] formsubmit: Formsubmits object (1)
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_get_formsubmit_formname_contact] form_submit name: Contact
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [tearDownClass] tearDownClass started
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_Formsubmits_serialized_object_with_expected_keys] serialized data Formsubmits: ['id', 'formname', 'companyname', 'customername', 'email', 'phonenumber', 'streetname', 'housenumber', 'postcode', 'city', 'message', 'submitted', 'status'] 
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [setUpClass] FormsubmitsViewTestClass started 
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_get_3_formsubmits_200] response: application/json
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_get_3_formsubmits_200] response content: [{'id': 1, 'formname': 'Contact', 'companyname': 'my company', 'customername': 'tester', 'email': 'test@test.com', 'phonenumber': '+83747737822', 'streetname': 'testHero', 'housenumber': '33A', 'postcode': '1222FF', 'city': 'Amsterdam', 'message': 'hello i like to order Cola', 'submitted': '2020-07-26T11:42:11+02:00', 'status': 1}, {'id': 2, 'formname': 'TankStation', 'companyname': 'my company2', 'customername': 'tester2', 'email': 'test2@test.com', 'phonenumber': '+8399999999', 'streetname': 'Linnaeusstraat', 'housenumber': '12', 'postcode': '1444FF', 'city': 'Zaandam', 'message': 'hello i like to order Coffee', 'submitted': '2020-07-26T11:43:38+02:00', 'status': 0}, {'id': 3, 'formname': 'Parking', 'companyname': 'my test company', 'customername': None, 'email': 'foo@fedal.nl', 'phonenumber': None, 'streetname': None, 'housenumber': None, 'postcode': None, 'city': None, 'message': None, 'submitted': '2020-07-30T09:25:23.995780+02:00', 'status': 1}]
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'email': 'bla@test.com', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] form saved
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_201] response: <Response status_code=201, "application/json">
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_201] content: {'Msg': 'OK'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co', 'email': 'foobar'}
+[30/Jul/2020 09:25:24] ERROR [25008:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Invalid email', code='invalid')]}
+[30/Jul/2020 09:25:24] ERROR [25008:wipecardetailing]             [post] error value: Invalid email
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_invalid_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_invalid_email_400] content: {'Msg': 'Invalid email'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] request: {'status': 1, 'formname': 'TanStation', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:25:24] ERROR [25008:wipecardetailing]             [post] error message: {'email': [ErrorDetail(string='Email field is required', code='required')]}
+[30/Jul/2020 09:25:24] ERROR [25008:wipecardetailing]             [post] error value: Email field is required
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_mising_email_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_mising_email_400] content: {'Msg': 'Email field is required'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] request: {'status': 1, 'email': 'foo@bar.com', 'companyname': 'Foo-Bar co'}
+[30/Jul/2020 09:25:24] ERROR [25008:wipecardetailing]             [post] error message: {'formname': [ErrorDetail(string='Formname field is required', code='required')]}
+[30/Jul/2020 09:25:24] ERROR [25008:wipecardetailing]             [post] error value: Formname field is required
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [post] default error message: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_mising_formname_400] response: <Response status_code=400, "application/json">
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [test_post_formsubmit_mising_formname_400] content: {'Msg': 'Formname field is required'}
+[30/Jul/2020 09:25:24] DEBUG [25008:wipecardetailing]             [tearDownClass] tearing down formsubmit view tests

@@ -9,7 +9,7 @@ logger = logging.getLogger('wipecardetailing')
 
 
 class FormsubmitsViewTestClass(TestCase):
-    """Wordlist view tests."""
+    """Formsubmits view tests."""
 
     @classmethod
     def setUpClass(cls):
@@ -21,13 +21,13 @@ class FormsubmitsViewTestClass(TestCase):
         # create the apiclient object
         cls.api_client = APIClient(enforce_csrf_checks=True)
 
-    def test_get_3_formsubmits_200(self):
+    def test_get_three_formsubmits_200(self):
         """test the get request to the api, expects to get 3 objects in json response
         format with http 200 response.
         """
 
         # set the url for the api with param
-        response = self.api_client.get(self.api_url) # make the GET request
+        response = self.api_client.get(self.api_url)  # make the GET request
         status_code = response.status_code
         content = response.json()
 
@@ -37,7 +37,6 @@ class FormsubmitsViewTestClass(TestCase):
         self.assertEquals(status_code, status.HTTP_200_OK)
         self.assertEquals(response['Content-Type'], 'application/json')
         self.assertEquals(len(content), 3)
-
 
     def test_post_formsubmit_201(self):
         """post request to create a new formsubmit, expect to get back
@@ -77,6 +76,44 @@ class FormsubmitsViewTestClass(TestCase):
         self.assertEquals(response['Content-Type'], 'application/json')
         self.assertEquals(content['Msg'], 'Email field is required')
 
+    def test_post_formsubmit_invalid_email_400(self):
+        """post request to create a new formsubmit without an invalid email, expect to get back
+        and error with statuscode 400"""
+
+        data = {
+            'formname': 'TanStation',
+            'companyname': 'Foo-Bar co',
+            'email': 'foobar'
+        }
+        response = self.api_client.post(self.api_url, data=data)
+        status_code = response.status_code
+        content = response.json()
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEquals(response['Content-Type'], 'application/json')
+        self.assertEquals(content['Msg'], 'Invalid email')
+
+    def test_post_formsubmit_mising_formname_400(self):
+        """post request to create a new formsubmit without a formname, expect to get back
+        and error with statuscode 400"""
+
+        data = {
+            'email': 'foo@bar.com',
+            'companyname': 'Foo-Bar co',
+        }
+        response = self.api_client.post(self.api_url, data=data)
+        status_code = response.status_code
+        content = response.json()
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEquals(response['Content-Type'], 'application/json')
+        self.assertEquals(content['Msg'], 'Formname field is required')
 
     @classmethod
     def tearDownClass(cls):
