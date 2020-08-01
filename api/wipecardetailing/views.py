@@ -56,6 +56,7 @@ class FormsubmitsView(generics.ListCreateAPIView):
         logger.debug("request: %s" % status_data)
         serializer = FormSubmitsSerializer(data=status_data)
         if serializer.is_valid():
+            serializer.save()
             logger.debug("form saved")
             return Response({'Msg': 'OK'}, status=status.HTTP_201_CREATED)
         else:
