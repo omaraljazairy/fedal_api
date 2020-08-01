@@ -114,7 +114,7 @@ LOGGING = {
             'level': LEVEL,
             'propagate': True,
         },
-        'mail': {
+        'email': {
             'handlers': ['file'],
             'level': LEVEL,
             'propagate': True,
@@ -254,3 +254,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Email setting
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = env.EMAIL['hosts']['strato']['tls']
+EMAIL_HOST = env.EMAIL['hosts']['strato']['host']
+EMAIL_PORT = env.EMAIL['hosts']['strato']['port']
+EMAIL_HOST_USER = env.EMAIL['users']['order_wcd']['user']
+EMAIL_HOST_PASSWORD = env.EMAIL['users']['order_wcd']['pass']
+EMAIL_USE_SSL: False

@@ -1,10 +1,10 @@
 from django.core.mail import EmailMultiAlternatives
 import logging
 
-logger = logging.getLogger('mail')
+logger = logging.getLogger('email')
 
-def send(sender=str, to=list, cc=list, bcc=list, subject=str, body=str, content_type='text', connection=None, headers=dict,
-         reply_to=list, attachments=list):
+def send(sender:str, to:list, subject:str, body:str, cc=[], bcc=[], content_type='text', connection=None,
+         headers=dict, reply_to=list, attachments=list):
     """
     a service to send emails as text or html format. Te content-type determines the body type of the email.
     :param sender: the sender email from who the email is sent.
@@ -20,10 +20,17 @@ def send(sender=str, to=list, cc=list, bcc=list, subject=str, body=str, content_
     :return: a dict with status and msg keys.
     """
 
+    # logger.debug("sender bcc: %s" % bcc)
+    if not all([subject, body, sender, to]):
+        logger.error('missing required param')
+        return {'status': 'ERROR', 'message': 'mising required param'}
+
     try:
-        msg = EmailMultiAlternatives(subject=subject, body=body, from_email=sender, to=to, bcc=bcc,
-                                     connection=connection, attachments=attachments, content_type=content_type,
-                                     cc=cc, headers=headers, reply_to=reply_to)
+        msg = EmailMultiAlternatives(
+            subject=subject, body=body, from_email=sender, to=to, cc=cc, bcc=bcc
+        )
+        # connection = connection, attachments = attachments, headers = headers, reply_to = reply_to
+        msg.content_subtype = content_type
         msg.send(fail_silently=False)
         logger.debug("email sent")
         return {'status': 'OK', 'message': "email sent"}

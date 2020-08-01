@@ -117,8 +117,5 @@ class FormsubmitsViewTestClass(TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """remove the user and the group"""
+        """teardown any initialized object"""
         logger.debug("tearing down formsubmit view tests")
-        # Permission.objects.all().delete()
-        # Group.objects.all().delete()
-        # User.objects.all().delete()

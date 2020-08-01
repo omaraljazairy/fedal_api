@@ -14,6 +14,7 @@ class FormSubmitsSerializer(serializers.ModelSerializer):
 
         model = Formsubmits
         fields = '__all__'
+        # they extra kwargs will be returned in the view during the validation before the save.
         extra_kwargs = {
             'status': {
                 'error_messages': {

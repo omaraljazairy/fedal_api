@@ -1186,3 +1186,74 @@
 [28/Jul/2020 23:25:34] ERROR [wipecardetailing:41]              - [views:post] form save: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
 [28/Jul/2020 23:30:58] DEBUG [wipecardetailing:35]              - [views:post] request: <QueryDict: {'formname': ['CarParking'], 'companyname': ['foo.com'], 'customername': ['foo'], 'email': ['bar@fedal.nl']}>
 [28/Jul/2020 23:30:58] ERROR [wipecardetailing:41]              - [views:post] form save: {'required': 'This field is required.', 'null': 'This field may not be null.', 'invalid': 'Invalid data. Expected a dictionary, but got {datatype}.'}
+[31/Jul/2020 22:46:25] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'bar@fedal.nl', 'subject': 'CarParking', 'body': False, 'to': [('Order', 'order@wipecardetailing.nl')]}
+[31/Jul/2020 22:46:25] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl'}
+[31/Jul/2020 22:46:25] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 22:50:13] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl'}
+[31/Jul/2020 22:50:13] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'bar@fedal.nl', 'subject': 'CarParking', 'body': False, 'to': [('Order', 'order@wipecardetailing.nl')]}
+[31/Jul/2020 22:50:13] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl'}
+[31/Jul/2020 22:50:13] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 22:52:26] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 22:52:26] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'bar@fedal.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Order', 'order@wipecardetailing.nl')]}
+[31/Jul/2020 22:52:30] ERROR [email]              - [email:send] error sending email: (530, b'5.7.0 User not authenticated', 'bar@fedal.nl')
+[31/Jul/2020 22:52:30] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 22:52:30] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:06:28] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:06:28] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:06:30] ERROR [email]              - [email:send] error sending email: (530, b'5.7.0 User not authenticated', 'order@wipecardetailing.nl')
+[31/Jul/2020 23:06:30] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:06:30] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:29:37] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:29:37] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': '', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:29:37] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:29:37] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:31:02] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:31:02] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:31:02] ERROR [email]              - [email:send] error sending email: [Errno 101] Network is unreachable
+[31/Jul/2020 23:31:02] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:31:03] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:31:36] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:31:36] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:31:36] ERROR [email]              - [email:send] error sending email: (530, b'5.7.0 User not authenticated', 'order@wipecardetailing.nl')
+[31/Jul/2020 23:31:36] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:31:36] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:32:13] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:32:13] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:32:15] ERROR [email]              - [email:send] error sending email: (530, b'5.7.0 User not authenticated', 'order@wipecardetailing.nl')
+[31/Jul/2020 23:32:15] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:32:15] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:49:34] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:49:34] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:49:36] ERROR [email]              - [email:send] error sending email: (530, b'5.7.0 User not authenticated', 'order@wipecardetailing.nl')
+[31/Jul/2020 23:49:36] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:49:36] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:51:18] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:51:18] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:51:20] ERROR [email]              - [email:send] error sending email: (530, b'5.7.0 User not authenticated', 'order@wipecardetailing.nl')
+[31/Jul/2020 23:51:20] DEBUG [wipecardetailing]              - [views:post] request: {'status': 0, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:51:20] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:52:52] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:52:52] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'hello this message is a test message from the api', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:52:53] DEBUG [email]              - [email:send] email sent
+[31/Jul/2020 23:52:53] DEBUG [wipecardetailing]              - [views:post] request: {'status': 1, 'formname': 'CarParking', 'companyname': 'foo.com', 'customername': 'foo', 'email': 'bar@fedal.nl', 'message': 'hello this message is a test message from the api'}
+[31/Jul/2020 23:52:53] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:55:09] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': 'finally, email is working'}
+[31/Jul/2020 23:55:09] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'finally, email is working', 'to': [('Omar', 'omar@fedal.nl')]}
+[31/Jul/2020 23:55:10] DEBUG [email]              - [email:send] email sent
+[31/Jul/2020 23:55:10] DEBUG [wipecardetailing]              - [views:post] request: {'status': 1, 'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': 'finally, email is working'}
+[31/Jul/2020 23:55:10] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:58:00] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': 'finally, email is working'}
+[31/Jul/2020 23:58:00] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'finally, email is working', 'to': [('Omar', 'omar@fedal.nl')], 'content_type': 'html'}
+[31/Jul/2020 23:58:01] DEBUG [email]              - [email:send] email sent
+[31/Jul/2020 23:58:01] DEBUG [wipecardetailing]              - [views:post] request: {'status': 1, 'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': 'finally, email is working'}
+[31/Jul/2020 23:58:01] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:58:43] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': '<h1>finally</h1>, <p>email is working</p>'}
+[31/Jul/2020 23:58:43] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': '<h1>finally</h1>, <p>email is working</p>', 'to': [('Omar', 'omar@fedal.nl')], 'content_type': 'html'}
+[31/Jul/2020 23:58:43] DEBUG [email]              - [email:send] email sent
+[31/Jul/2020 23:58:43] DEBUG [wipecardetailing]              - [views:post] request: {'status': 1, 'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': '<h1>finally</h1>, <p>email is working</p>'}
+[31/Jul/2020 23:58:43] DEBUG [wipecardetailing]              - [views:post] form saved
+[31/Jul/2020 23:59:34] DEBUG [wipecardetailing]              - [views:post] data: {'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': 'html email is working'}
+[31/Jul/2020 23:59:34] DEBUG [wipecardetailing]              - [views:post] email data: {'sender': 'order@wipecardetailing.nl', 'subject': 'CarParking', 'body': 'html email is working', 'to': [('Omar', 'omar@fedal.nl')], 'content_type': 'html'}
+[31/Jul/2020 23:59:34] DEBUG [email]              - [email:send] email sent
+[31/Jul/2020 23:59:34] DEBUG [wipecardetailing]              - [views:post] request: {'status': 1, 'formname': 'CarParking', 'companyname': 'myfoo.com', 'customername': 'myfoo', 'email': 'mybar@fedal.nl', 'message': 'html email is working'}
+[31/Jul/2020 23:59:34] DEBUG [wipecardetailing]              - [views:post] form saved

@@ -94,7 +94,7 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-        'mail': {
+        'email': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
@@ -268,11 +268,15 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': datetime.timedelta(days=1),
 }
 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Nose unitests setting
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--cover-erase',
     '--with-coverage',
-    '--cover-package=wipecardetailing,spanglish',
+    '--cover-package=services,wipecardetailing,spanglish',
     '--with-xunit',
     '--cover-html',
     '--cover-html-dir=tests/htmlcov',
