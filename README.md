@@ -1,0 +1,1 @@
+the Fedal API is meant for my own private projects. It is serves as a backend and provides data from different sources. It will connect to MariaDB, sqlite, MongoDB and 3rd party APIs
