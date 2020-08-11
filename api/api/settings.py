@@ -25,13 +25,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'so74c%%e&iikep)b(-xi%1(fq(ljv)%i1dlq$p1je(bul)jm$i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# check if the environ variables are set for the elasticbean environment.
+# if not, use the local env file.
+print('environ: ', os.environ)
 
-LEVEL = env.LEVEL
-DEBUG = env.DEBUG
+LEVEL = os.environ['LEVEL']
+DEBUG = os.environ['DEBUG']
 IS_TESTING = False
 
-ALLOWED_HOSTS = env.HOSTS
-
+ALLOWED_HOSTS = [os.environ['HOSTS']]
 
 # Application definition
 
@@ -128,28 +130,28 @@ LOGGING = {
 
 DATABASES = {
     'default': {
-        'ENGINE': env.DB['ENGINE'],
-        'NAME': env.DB['NAME'],
-        'USER': env.DB['USER'],
-        'PASSWORD': env.DB['PASSWORD'],
-        'HOST': env.DB['HOST'],
-        'PORT': env.DB['PORT'],
+        'ENGINE': os.environ['RDS_DB_ENGINE'],
+        'NAME': os.environ['RDS_DB_NAME'],
+        'USER': os.environ['RDS_DB_USERNAME'],
+        'PASSWORD': os.environ['RDS_DB_PASSWORD'],
+        'HOST': os.environ['RDS_DB_HOST'],
+        'PORT': os.environ['RDS_DB_PORT'],
     },
     'spanglish': {
-        'ENGINE': env.DB['ENGINE'],
+        'ENGINE': os.environ['RDS_DB_ENGINE'],
         'NAME': 'Spanglish',
-        'USER': env.DB['USER'],
-        'PASSWORD': env.DB['PASSWORD'],
-        'HOST': env.DB['HOST'],
-        'PORT': env.DB['PORT'],
+        'USER': os.environ['RDS_DB_USERNAME'],
+        'PASSWORD': os.environ['RDS_DB_PASSWORD'],
+        'HOST': os.environ['RDS_DB_HOST'],
+        'PORT': os.environ['RDS_DB_PORT'],
     },
     'wipecardetailing': {
-        'ENGINE': env.DB['ENGINE'],
+        'ENGINE': os.environ['RDS_DB_ENGINE'],
         'NAME': 'Wipecardetailing',
-        'USER': env.DB['USER'],
-        'PASSWORD': env.DB['PASSWORD'],
-        'HOST': env.DB['HOST'],
-        'PORT': env.DB['PORT'],
+        'USER': os.environ['RDS_DB_USERNAME'],
+        'PASSWORD': os.environ['RDS_DB_PASSWORD'],
+        'HOST': os.environ['RDS_DB_HOST'],
+        'PORT': os.environ['RDS_DB_PORT'],
     }
 }
 
@@ -219,7 +221,7 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
+    'SIGNING_KEY': os.environ['SECRET_KEY'],
     'VERIFYING_KEY': None,
 
     'AUTH_HEADER_TYPES': ('Bearer',),
@@ -258,9 +260,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Email setting
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = env.EMAIL['hosts']['strato']['tls']
-EMAIL_HOST = env.EMAIL['hosts']['strato']['host']
-EMAIL_PORT = env.EMAIL['hosts']['strato']['port']
-EMAIL_HOST_USER = env.EMAIL['users']['order_wcd']['user']
-EMAIL_HOST_PASSWORD = env.EMAIL['users']['order_wcd']['pass']
-EMAIL_USE_SSL: False
+EMAIL_USE_TLS = os.environ['EMAIL_STRATO_TLS']
+EMAIL_HOST = os.environ['EMAIL_STRATO_HOST']
+EMAIL_PORT = os.environ['EMAIL_STRATO_PORT']
+EMAIL_HOST_USER = os.environ['EMAIL_STRATO_WCD_ORDER_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_STRATO_WCD_ORDER_PASSWORD']
+EMAIL_USE_SSL = os.environ['EMAIL_STRATO_SECURE']

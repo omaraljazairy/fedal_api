@@ -10,7 +10,7 @@ COPY . /fedal_api
 
 ADD ./ /fedal_api/
 
-RUN python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+RUN python -m pip install --upgrade pip && python -m pip install -r api/requirements.txt
 
 # RUN python api/manage.py collectstatic --no-input
 
