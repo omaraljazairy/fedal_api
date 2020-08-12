@@ -3,7 +3,9 @@
 from .models import Word, Category
 from .serializers import WordSerializer, CategorySerializer
 from rest_framework import generics, status, viewsets
+from rest_framework.reverse import reverse
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from api.permissions import IsOwner
@@ -37,6 +39,7 @@ class WordListView(generics.ListAPIView):
     # throttle_scope = 'spanglish'
     name = "words-list"
     queryset = Word.objects.all()
+    serializer_class = WordSerializer
 
     def get(self, request, iso1):
         """Return a list of all words based on the iso1 param."""
@@ -51,7 +54,7 @@ class WordListView(generics.ListAPIView):
         return Response(data, status=status.HTTP_200_OK)
 
 
-class ApiRoot(generics.GenericAPIView):
+class ApiRoot(APIView):
     """Spanglish apis."""
 
     name = 'api-root'
@@ -61,5 +64,6 @@ class ApiRoot(generics.GenericAPIView):
         """Return all the apis."""
         return Response(
             {
+                'words': reverse(WordListView.name, request=request)
             }
         )

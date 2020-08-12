@@ -64,6 +64,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
+    'rest_framework_swagger',
     'rest_framework',
     'spanglish',
     'wipecardetailing'
@@ -213,9 +215,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.AllowAny',
+        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        #'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
 
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -231,7 +234,8 @@ REST_FRAMEWORK = {
         'user': '100/day',
         'spanglish': '100/day',
         'wipecardetailing': '100/day',
-    }
+    },
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 SIMPLE_JWT = {
@@ -287,3 +291,4 @@ EMAIL_PORT = os.environ['EMAIL_STRATO_PORT']
 EMAIL_HOST_USER = os.environ['EMAIL_STRATO_WCD_ORDER_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_STRATO_WCD_ORDER_PASSWORD']
 EMAIL_USE_SSL = os.environ['EMAIL_STRATO_SECURE']
+
