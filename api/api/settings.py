@@ -59,6 +59,7 @@ if os.environ['ENV'] != 'DEV':
     ALLOWED_HOSTS = os.environ['HOSTS']
 
 print("Allowed_hosts: ", ALLOWED_HOSTS)
+print("allowed hosts type: ", type(ALLOWED_HOSTS))
 # Application definition
 
 INSTALLED_APPS = [
