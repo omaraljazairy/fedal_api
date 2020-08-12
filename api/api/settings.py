@@ -17,18 +17,27 @@ import datetime
 # create a base dir constant that points to the main project directoy
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# use pathlib to create the path for the env.py file.
+# use pathlib to create the path for the env.py file and load it if it
+# exists, otherwise just ignore it and take the environment variables from
+# the system
 env_file = Path(BASE_DIR, "api/env.py")
 if os.path.isfile('./env.py'):
     print("env file exists")
 else:
     print("env file doesn't exist")
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-
 print("BASE_DIR %s" % BASE_DIR)
 print("env_file: ", env_file)
 print("isFile exist: ", os.path.isfile(env_file))
+
+# check if the logs directory exsts, if not, create it
+log_dir = Path(BASE_DIR, "logs")
+print("logs directory exists: ", os.path.exists(log_dir))
+if os.path.exists(log_dir):
+    print("logs dir exists")
+else:
+    os.mkdir(log_dir)
+    print("logs directory created: ", os.path.exists(log_dir))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
