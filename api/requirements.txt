@@ -31,7 +31,6 @@ flake8-docstrings==1.5.0
 flake8-todo==0.7
 forex-python==1.0.0
 gunicorn==20.0.4
-httpie==0.9.9
 idna==2.6
 imagesize==1.0.0
 isort==4.3.21
