@@ -64,6 +64,6 @@ class ApiRoot(APIView):
         """Return all the apis."""
         return Response(
             {
-                'words': reverse(WordListView.name, request=request)
+                # 'words': reverse(WordListView.name, request=request)
             }
         )

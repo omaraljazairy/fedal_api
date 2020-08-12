@@ -16,26 +16,18 @@ import datetime
 
 # create a base dir constant that points to the main project directoy
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print("BASE_DIR %s" % BASE_DIR)
 
 # use pathlib to create the path for the env.py file and load it if it
 # exists, otherwise just ignore it and take the environment variables from
 # the system
 env_file = Path(BASE_DIR, "api/env.py")
 if os.path.isfile(env_file):
-    print("env file exists")
     from api import env
-else:
-    print("env file doesn't exist")
 
 # check if the logs directory exsts, if not, create it
 log_dir = Path(BASE_DIR, "logs")
-print("logs directory exists: ", os.path.exists(log_dir))
-if os.path.exists(log_dir):
-    print("logs dir exists")
-else:
+if not os.path.exists(log_dir):
     os.mkdir(log_dir)
-    print("logs directory created: ", os.path.exists(log_dir))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -46,15 +38,12 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 # check if the environ variables are set for the elasticbean environment.
 # if not, use the local env file.
-print('environ: ', os.environ)
 
 LEVEL = os.environ['LEVEL']
 DEBUG = os.environ['DEBUG']
 IS_TESTING = False
 ALLOWED_HOSTS = os.environ['HOSTS'].split(',')
 
-print("Allowed_hosts: ", ALLOWED_HOSTS)
-print("allowed hosts type: ", type(ALLOWED_HOSTS))
 # Application definition
 
 INSTALLED_APPS = [
@@ -291,4 +280,3 @@ EMAIL_PORT = os.environ['EMAIL_STRATO_PORT']
 EMAIL_HOST_USER = os.environ['EMAIL_STRATO_WCD_ORDER_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_STRATO_WCD_ORDER_PASSWORD']
 EMAIL_USE_SSL = os.environ['EMAIL_STRATO_SECURE']
-
