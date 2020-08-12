@@ -53,8 +53,10 @@ print('environ: ', os.environ)
 LEVEL = os.environ['LEVEL']
 DEBUG = os.environ['DEBUG']
 IS_TESTING = False
-
 ALLOWED_HOSTS = [os.environ['HOSTS']]
+
+if os.environ['ENV'] != 'DEV':
+    ALLOWED_HOSTS = os.environ['HOSTS']
 
 # Application definition
 
