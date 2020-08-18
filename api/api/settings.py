@@ -29,6 +29,7 @@ log_dir = Path(BASE_DIR, "logs")
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
 
+print("os env: %s" % os.environ)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -279,7 +280,8 @@ EMAIL_HOST = os.environ['EMAIL_STRATO_HOST']
 EMAIL_PORT = os.environ['EMAIL_STRATO_PORT']
 EMAIL_HOST_USER = os.environ['EMAIL_STRATO_WCD_ORDER_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_STRATO_WCD_ORDER_PASSWORD']
-EMAIL_USE_SSL = os.environ['EMAIL_STRATO_SECURE']
-
+# EMAIL_USE_SSL = bool(os.environ['EMAIL_STRATO_SECURE'])
+EMAIL_USE_TLS = bool(os.environ['EMAIL_STRATO_TLS'])
+EMAIL_TO = os.environ['EMAIL_TO']
 # API-Key
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"

@@ -31,13 +31,18 @@ class FormsubmitsView(generics.ListCreateAPIView):
         # create a new dict from the request object to append the status value with it.
         data = {k:v for k,v in request.data.items()}
         logger.debug('data: %s' % data)
+        to = settings.EMAIL_TO
+        logger.debug('to.split(;) %s' % to.split(";"))
+        email_to = list(tuple(t.split(",")) for t in to.split(";"))
+        logger.debug("to: %s" % to)
+        logger.debug("email_to: %s" % email_to)
 
         # create a dict for the email send function.
         email_data = {
             'sender': settings.EMAIL_HOST_USER,
             'subject': data.get('formname',False),
             'body': data.get('message', False),
-            'to': [('Omar', 'omar@fedal.nl'),],
+            'to': email_to, # [('Omar', 'omar@fedal.nl'),],
             'content_type': 'html'
         }
 
@@ -45,6 +50,7 @@ class FormsubmitsView(generics.ListCreateAPIView):
         # if any of the values in the eail_data is not True, the status will be 0
         if all(email_data.values()):
             email_response = send(**email_data)
+            # email_response = {'status': 'OK'}
             if email_response['status'] == 'OK':
                 status_data = {'status': 1 }
             else:
