@@ -8,6 +8,7 @@ from api.throttles import WipecardetailingRateThrottle
 from django.conf import settings
 from django.core.cache import cache
 from services.email import send
+from rest_framework_api_key.permissions import HasAPIKey
 import logging
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', 10)
@@ -16,7 +17,7 @@ logger = logging.getLogger('wipecardetailing')
 
 class FormsubmitsView(generics.ListCreateAPIView):
     """ post and get requests to the form without any restrictions. """
-    permission_classes = (AllowAny,)
+    permission_classes = [HasAPIKey]
     throttle_classes = (WipecardetailingRateThrottle,)
     name  = 'formsubmit-listcreate'
     queryset = Formsubmits.objects.all()

@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'rest_framework',
     'spanglish',
-    'wipecardetailing'
+    'wipecardetailing',
+    'rest_framework_api_key'
 ]
 
 MIDDLEWARE = [
@@ -272,7 +273,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Email setting
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = os.environ['EMAIL_STRATO_TLS']
 EMAIL_HOST = os.environ['EMAIL_STRATO_HOST']
@@ -280,3 +280,6 @@ EMAIL_PORT = os.environ['EMAIL_STRATO_PORT']
 EMAIL_HOST_USER = os.environ['EMAIL_STRATO_WCD_ORDER_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_STRATO_WCD_ORDER_PASSWORD']
 EMAIL_USE_SSL = os.environ['EMAIL_STRATO_SECURE']
+
+# API-Key
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
