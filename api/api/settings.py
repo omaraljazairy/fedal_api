@@ -104,6 +104,10 @@ LOGGING = {
              - [%(module)s:%(funcName)s] %(message)s",
             'datefmt': "%d/%b/%Y %H:%M:%S"
         },
+        'verbose': {
+            'format': "%(asctime)s %(levelname)s %(module)s: %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
     },
     'handlers': {
         'file': {
@@ -111,6 +115,12 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join( os.environ['LOG_DIR'] ,'analyzer.log'),
             'formatter': 'standard',
+        },
+        'aws': {
+            'level': LEVEL,
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(os.environ['LOG_DIR'], 'analyzer.log'),
+            'formatter': 'verbose',
         },
         'console': {
             'level': 'INFO',
@@ -125,12 +135,12 @@ LOGGING = {
             'propagate': True,
         },
         'wipecardetailing': {
-            'handlers': ['file'],
+            'handlers': ['aws'],
             'level': LEVEL,
             'propagate': True,
         },
         'email': {
-            'handlers': ['file'],
+            'handlers': ['aws'],
             'level': LEVEL,
             'propagate': True,
         },
