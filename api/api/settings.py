@@ -109,7 +109,7 @@ LOGGING = {
         'file': {
             'level': LEVEL,
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join( os.environ['LOG_DIR'] ,'api.log'),
+            'filename': os.path.join( os.environ['LOG_DIR'] ,'analyzer.log'),
             'formatter': 'standard',
         },
         'console': {
