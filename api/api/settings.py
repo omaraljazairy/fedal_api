@@ -29,7 +29,7 @@ log_dir = Path(BASE_DIR, "logs")
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
 
-print("os env: %s" % os.environ)
+# print("os env: %s" % os.environ)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -109,7 +109,7 @@ LOGGING = {
         'file': {
             'level': LEVEL,
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
+            'filename': os.path.join(BASE_DIR, 'logs/api.log'),
             'formatter': 'standard',
         },
         'console': {

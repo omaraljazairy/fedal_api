@@ -20,8 +20,19 @@ class FormsubmitsView(generics.ListCreateAPIView):
     permission_classes = [HasAPIKey]
     throttle_classes = (WipecardetailingRateThrottle,)
     name  = 'formsubmit-listcreate'
-    queryset = Formsubmits.objects.all()
-    serializer_class = FormSubmitsSerializer
+    # queryset = Formsubmits.objects.all()
+    # serializer_class = FormSubmitsSerializer
+
+    def get(self, request, *args, **kwargs):
+        """override the get to customize the data returned and add logging. """
+
+        logger.debug("request received: %s" % request.GET)
+
+        queryset = Formsubmits.objects.all()
+        serializer = FormSubmitsSerializer(queryset, many=True)
+        data = serializer.data
+
+        return Response(data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         """create a formsubmit object with the status value depending on the email send result if required.
