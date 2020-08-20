@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from pathlib import Path
 import datetime
+from boto3.session import Session
 
 # create a base dir constant that points to the main project directoy
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,6 +45,16 @@ LEVEL = os.environ['LEVEL']
 DEBUG = os.environ['DEBUG']
 IS_TESTING = False
 ALLOWED_HOSTS = os.environ['HOSTS'].split(',')
+
+# AWS
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_REGION_NAME = os.environ['AWS_REGION_NAME']
+AWS_LOG_GROUP = os.environ['AWS_LOG_GROUP'] # your log group
+AWS_LOG_STREAM = os.environ['AWS_LOG_STREAM'] # your stream
+AWS_LOGGER_NAME = os.environ['AWS_LOGGER_NAME'] # your logger
+
+
 
 # Application definition
 
@@ -94,6 +105,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'api.wsgi.application'
 
 # logger
+boto3_session = Session(
+  aws_access_key_id=AWS_ACCESS_KEY_ID,
+  aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+  region_name=AWS_REGION_NAME
+)
 
 LOGGING = {
     'version': 1,
@@ -127,6 +143,14 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'standard'
         },
+        'watchtower': {
+            'level': 'DEBUG',
+            'class': 'watchtower.CloudWatchLogHandler',
+            'boto3_session': boto3_session,
+            'log_group': AWS_LOG_GROUP,
+            'stream_name': AWS_LOG_STREAM,
+            'formatter': 'verbose', # use custom format
+        },
     },
     'loggers': {
         'spanglish': {
@@ -143,6 +167,11 @@ LOGGING = {
             'handlers': ['aws'],
             'level': LEVEL,
             'propagate': True,
+        },
+        AWS_LOGGER_NAME: {
+            'level': 'DEBUG',
+            'handlers': ['watchtower'],
+            'propagate': False,
         },
     },
 }

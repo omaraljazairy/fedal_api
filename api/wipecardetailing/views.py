@@ -12,8 +12,8 @@ from rest_framework_api_key.permissions import HasAPIKey
 import logging
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', 10)
-logger = logging.getLogger('wipecardetailing')
-
+# logger = logging.getLogger('wipecardetailing')
+logger = logging.getLogger('fedal-watchtower-logger')
 
 class FormsubmitsView(generics.ListCreateAPIView):
     """ post and get requests to the form without any restrictions. """
