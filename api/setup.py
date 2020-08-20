@@ -38,7 +38,7 @@ def read(fname):
 
 setup(
     name='FedalRestfulAPI',
-    version='3.0',
+    version='3.2',
     description='private resutful api',
     author='Omar Aljazairy',
     author_email='omar@fedal.nl',
@@ -46,7 +46,7 @@ setup(
     url='http://fedal.net',
     long_description=read('README.md'),
     install_requires=[read('requirements.txt')],
-    packages=find_packages(include=['api.api', 'api.spanglish', 'api.tests']),
+    packages=find_packages(include=['api', 'spanglish', 'tests', 'wipecardetailing']),
     package_data={
         # If any package contains *.txt or *.rst files,
         # include them:
