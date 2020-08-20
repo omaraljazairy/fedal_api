@@ -43,6 +43,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 LEVEL = os.environ['LEVEL']
 DEBUG = os.environ['DEBUG']
+ENV = os.environ['ENV']
 IS_TESTING = False
 ALLOWED_HOSTS = os.environ['HOSTS'].split(',')
 
@@ -53,8 +54,6 @@ AWS_REGION_NAME = os.environ['AWS_REGION_NAME']
 AWS_LOG_GROUP = os.environ['AWS_LOG_GROUP'] # your log group
 AWS_LOG_STREAM = os.environ['AWS_LOG_STREAM'] # your stream
 AWS_LOGGER_NAME = os.environ['AWS_LOGGER_NAME'] # your logger
-
-
 
 # Application definition
 
@@ -129,14 +128,8 @@ LOGGING = {
         'file': {
             'level': LEVEL,
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join( os.environ['LOG_DIR'] ,'analyzer.log'),
+            'filename': os.path.join( os.environ['LOG_DIR'] ,'api.log'),
             'formatter': 'standard',
-        },
-        'aws': {
-            'level': LEVEL,
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(os.environ['LOG_DIR'], 'analyzer.log'),
-            'formatter': 'verbose',
         },
         'console': {
             'level': 'INFO',
@@ -149,7 +142,7 @@ LOGGING = {
             'boto3_session': boto3_session,
             'log_group': AWS_LOG_GROUP,
             'stream_name': AWS_LOG_STREAM,
-            'formatter': 'verbose', # use custom format
+            'formatter': 'standard', # use custom format
         },
     },
     'loggers': {
@@ -159,18 +152,23 @@ LOGGING = {
             'propagate': True,
         },
         'wipecardetailing': {
-            'handlers': ['aws'],
+            'handlers': ['file'],
+            'level': LEVEL,
+            'propagate': True,
+        },
+        'api': {
+            'handlers': ['file'],
             'level': LEVEL,
             'propagate': True,
         },
         'email': {
-            'handlers': ['aws'],
+            'handlers': ['file'],
             'level': LEVEL,
             'propagate': True,
         },
         AWS_LOGGER_NAME: {
             'level': 'DEBUG',
-            'handlers': ['watchtower'],
+            'handlers': ['watchtower'] if ENV != 'DEV' else ['file'],
             'propagate': False,
         },
     },
