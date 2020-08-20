@@ -41,12 +41,15 @@ class FormsubmitsView(generics.ListCreateAPIView):
 
         # create a new dict from the request object to append the status value with it.
         data = {k:v for k,v in request.data.items()}
-        logger.debug('data: %s' % data)
+        logger.debug('form data received: %s' % data)
+
+        # get the emails to from the EMAIL_TO environment variable
+        # the EMAIL_TO variable will be a string with a name and email
+        # split by a comma. each name and email combination will be seperated
+        # by a ; example foo,foo@foo.com;bar@bar.com
         to = settings.EMAIL_TO
-        logger.debug('to.split(;) %s' % to.split(";"))
+        # convert the EMAIL_TO string to a list of tuples.
         email_to = list(tuple(t.split(",")) for t in to.split(";"))
-        logger.debug("to: %s" % to)
-        logger.debug("email_to: %s" % email_to)
 
         # create a dict for the email send function.
         email_data = {
@@ -57,7 +60,6 @@ class FormsubmitsView(generics.ListCreateAPIView):
             'content_type': 'html'
         }
 
-        logger.debug('email data: %s' % email_data)
         # if any of the values in the eail_data is not True, the status will be 0
         if all(email_data.values()):
             email_response = send(**email_data)
@@ -70,8 +72,8 @@ class FormsubmitsView(generics.ListCreateAPIView):
             status_data = {'status': 0}
 
         status_data.update(data) # add the status of the email
+        logger.debug("email request status: %s" % status_data)
 
-        logger.debug("request: %s" % status_data)
         serializer = FormSubmitsSerializer(data=status_data)
         if serializer.is_valid():
             serializer.save()

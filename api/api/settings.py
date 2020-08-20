@@ -119,7 +119,7 @@ LOGGING = {
              - [%(module)s:%(funcName)s] %(message)s",
             'datefmt': "%d/%b/%Y %H:%M:%S"
         },
-        'verbose': {
+        'aws': {
             'format': "%(asctime)s %(levelname)s %(module)s: %(message)s",
             'datefmt': "%d/%b/%Y %H:%M:%S"
         },
@@ -142,7 +142,7 @@ LOGGING = {
             'boto3_session': boto3_session,
             'log_group': AWS_LOG_GROUP,
             'stream_name': AWS_LOG_STREAM,
-            'formatter': 'standard', # use custom format
+            'formatter': 'aws', # use custom format
         },
     },
     'loggers': {
