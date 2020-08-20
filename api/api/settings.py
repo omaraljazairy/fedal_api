@@ -258,8 +258,8 @@ REST_FRAMEWORK = {
         # 'api.throttles.SpanglishRateThrottle',
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',
-        'user': '100/day',
+        'anon': '10000/day',
+        'user': '10000/day',
         'spanglish': '100/day',
         'wipecardetailing': '100/day',
     },
