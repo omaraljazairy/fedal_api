@@ -6,7 +6,7 @@ RUN mkdir /fedal_api
 
 WORKDIR /fedal_api
 
-COPY . /fedal_api
+COPY . /fedal_api/
 
 ADD ./ /fedal_api/
 
