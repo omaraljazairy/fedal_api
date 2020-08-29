@@ -1,6 +1,6 @@
 -- MySQL dump 10.14  Distrib 5.5.65-MariaDB, for Linux (x86_64)
 --
--- Host: 172.20.0.3    Database: Wipecardetailing
+-- Host: 192.168.178.25    Database: Wipecardetailing
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -35,11 +35,11 @@ CREATE TABLE `FormSubmits` (
   `City` varchar(45) DEFAULT NULL,
   `Message` longtext,
   `Submitted` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` tinyint NOT NULL DEFAULT '1',
+  `Status` enum('SUCCESS','ERROR','PENDING') NOT NULL DEFAULT 'PENDING',
   PRIMARY KEY (`Id`),
   KEY `formname_idx` (`Status`),
   KEY `status_idx` (`Status`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,4 +74,4 @@ CREATE TABLE `Multimedia` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-01 14:01:42
+-- Dump completed on 2020-08-29 14:11:26

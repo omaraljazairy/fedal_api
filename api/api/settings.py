@@ -65,7 +65,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
+    'drf_yasg',
     'rest_framework',
     'spanglish',
     'wipecardetailing',
@@ -322,3 +323,22 @@ EMAIL_USE_TLS = bool(os.environ['EMAIL_STRATO_TLS'])
 EMAIL_TO = os.environ['EMAIL_TO']
 # API-Key
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Basic': {
+            'type': 'basic'
+      },
+      'Bearer': {
+          'type': 'http',
+          'scheme': 'bearer',
+          'bearerFormat': 'JWT',
+          'in': 'header'
+      },
+      'ApiKeyAuth': {
+          'type': 'apiKey',
+          'name': 'Authorization',
+          'in': 'header'
+      }
+   }
+}

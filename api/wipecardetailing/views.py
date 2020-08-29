@@ -2,13 +2,12 @@ from .models import Formsubmits
 from .serializers import FormSubmitsSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
-
-from rest_framework.permissions import AllowAny
 from api.throttles import WipecardetailingRateThrottle
 from django.conf import settings
 from django.core.cache import cache
 from services.email import send
 from rest_framework_api_key.permissions import HasAPIKey
+from drf_yasg.utils import swagger_auto_schema
 import logging
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', 10)
@@ -20,9 +19,18 @@ class FormsubmitsView(generics.ListCreateAPIView):
     permission_classes = [HasAPIKey]
     throttle_classes = (WipecardetailingRateThrottle,)
     name  = 'formsubmit-listcreate'
-    # queryset = Formsubmits.objects.all()
-    # serializer_class = FormSubmitsSerializer
+    serializer_class = FormSubmitsSerializer
 
+    @swagger_auto_schema(operation_description="Get all the form data submitted",
+                         security=[
+                             {
+                                 'ApiKeyAuth':
+                                 [
+                                     'Uses the X-API-KEY param name in the header.'
+                                 ]
+                             }
+                         ],
+                         )
     def get(self, request, *args, **kwargs):
         """override the get to customize the data returned and add logging. """
 
@@ -34,9 +42,19 @@ class FormsubmitsView(generics.ListCreateAPIView):
 
         return Response(data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(operation_description="Posts a form data",
+                         security=[
+                             {
+                                 'ApiKeyAuth':
+                                     [
+                                         'Uses the X-API-KEY param name in the header.'
+                                     ]
+                             }
+                         ],
+                         )
     def post(self, request, *args, **kwargs):
-        """create a formsubmit object with the status value depending on the email send result if required.
-        if the email is sent successfully, the status of the formsubmit will be true, otherwise false.
+        """save the submitted form data in the database and send it as an email.
+        The http statuscode returned will be 201 if success.
         """
 
         # create a new dict from the request object to append the status value with it.
@@ -65,11 +83,11 @@ class FormsubmitsView(generics.ListCreateAPIView):
             email_response = send(**email_data)
             # email_response = {'status': 'OK'}
             if email_response['status'] == 'OK':
-                status_data = {'status': 1 }
+                status_data = {'status': 'SUCCESS'}
             else:
-                status_data = {'status': 0}
+                status_data = {'status': 'ERROR'}
         else:
-            status_data = {'status': 0}
+            status_data = {'status': 'ERROR'}
 
         status_data.update(data) # add the status of the email
         logger.debug("email request status: %s" % status_data)

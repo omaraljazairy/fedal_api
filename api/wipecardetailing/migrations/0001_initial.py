@@ -26,7 +26,8 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(blank=True, db_column='City', max_length=45, null=True)),
                 ('message', models.TextField(blank=True, db_column='Message', max_length=254, null=True)),
                 ('submitted', models.DateTimeField(db_column='Submitted', auto_now_add=True)),
-                ('status', models.SmallIntegerField(db_column='Status')),
+                ('status', models.CharField(db_column='Status', max_length=254, blank=False, null=False,
+                                            default='PENDING')),
             ],
             options={
                 'db_table': 'FormSubmits',

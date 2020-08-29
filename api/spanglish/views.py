@@ -12,6 +12,7 @@ from api.permissions import IsOwner
 from api.throttles import SpanglishRateThrottle
 from django.conf import settings
 from django.core.cache import cache
+from drf_yasg.utils import swagger_auto_schema
 import logging
 
 
@@ -29,6 +30,7 @@ class CategoryViews(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     name = 'category-list'
+    schema = None
 
 
 class WordListView(generics.ListAPIView):
@@ -41,6 +43,8 @@ class WordListView(generics.ListAPIView):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
 
+    @swagger_auto_schema(operation_description="Takes only the iso1 parameter and returns the language",
+                         security=[{'Bearer':['Uses the Authentication param name with the bearer + token value.']}],)
     def get(self, request, iso1):
         """Return a list of all words based on the iso1 param."""
         logger.debug("iso1 param received: %s" % iso1)
@@ -52,18 +56,3 @@ class WordListView(generics.ListAPIView):
         logger.debug("data returned from serializer: %s" % data)
 
         return Response(data, status=status.HTTP_200_OK)
-
-
-class ApiRoot(APIView):
-    """Spanglish apis."""
-
-    name = 'api-root'
-    _ignore_model_permissions = True
-
-    def get(self, request, *args, **kwargs):
-        """Return all the apis."""
-        return Response(
-            {
-                # 'words': reverse(WordListView.name, request=request)
-            }
-        )

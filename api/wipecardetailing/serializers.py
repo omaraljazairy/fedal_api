@@ -2,9 +2,10 @@
 
 from .models import Formsubmits, Multimedia
 from rest_framework import serializers
+from django.conf import settings
 import logging
 
-logger = logging.getLogger('wipecardetailing')
+logger = logging.getLogger(settings.AWS_LOGGER_NAME)
 
 class FormSubmitsSerializer(serializers.ModelSerializer):
     """Serialize the formsubmits object."""

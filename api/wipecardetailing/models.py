@@ -26,7 +26,8 @@ class Formsubmits(models.Model):
     city = models.CharField(db_column='City', max_length=45, blank=True, null=True)  # Field name made lowercase.
     message = models.TextField(db_column='Message', max_length=254, blank=True, null=True)  # Field name made lowercase.
     submitted = models.DateTimeField(auto_now_add=True, db_column='Submitted')  # Field name made lowercase.
-    status = models.SmallIntegerField(db_column='Status')  # Field name made lowercase.
+    # status = models.SmallIntegerField(db_column='Status')  # Field name made lowercase.
+    status = models.CharField(db_column='Status', max_length=254, blank=False, null=False, default='PENDING')
 
 
     class Meta:

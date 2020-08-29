@@ -19,7 +19,6 @@ from tests import test_env
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -33,6 +32,7 @@ IS_TESTING = True
 ALLOWED_HOSTS = []
 FIXTURE_DIRS = 'fixtures/'
 
+AWS_LOGGER_NAME = "unitest"
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_nose',
     'spanglish',
     'wipecardetailing',
+    'rest_framework_api_key'
 ]
 
 
@@ -138,22 +139,22 @@ DATABASES = {
         'HOST': test_env.DB['HOST'],
         'PORT': test_env.DB['PORT']
     },
-    'spanglish': {
-        'ENGINE': test_env.DB['ENGINE'],
-        'NAME': test_env.DB['NAME'],
-        'USER': test_env.DB['USER'],
-        'PASSWORD': test_env.DB['PASSWORD'],
-        'HOST': test_env.DB['HOST'],
-        'PORT': test_env.DB['PORT']
-    },
-    'wipecardetailing': {
-        'ENGINE': test_env.DB['ENGINE'],
-        'NAME': test_env.DB['NAME'],
-        'USER': test_env.DB['USER'],
-        'PASSWORD': test_env.DB['PASSWORD'],
-        'HOST': test_env.DB['HOST'],
-        'PORT': test_env.DB['PORT']
-    }
+    # 'spanglish': {
+    #     'ENGINE': test_env.DB['ENGINE'],
+    #     'NAME': test_env.DB['NAME'],
+    #     'USER': test_env.DB['USER'],
+    #     'PASSWORD': test_env.DB['PASSWORD'],
+    #     'HOST': test_env.DB['HOST'],
+    #     'PORT': test_env.DB['PORT']
+    # },
+    # 'wipecardetailing': {
+    #     'ENGINE': test_env.DB['ENGINE'],
+    #     'NAME': test_env.DB['NAME'],
+    #     'USER': test_env.DB['USER'],
+    #     'PASSWORD': test_env.DB['PASSWORD'],
+    #     'HOST': test_env.DB['HOST'],
+    #     'PORT': test_env.DB['PORT']
+    # }
 }
 
 DATABASE_RAW_TABLES = {
@@ -166,11 +167,11 @@ DATABASE_RAW_TABLES = {
     "formsubmit": "FormSubmits",
     "multimedia": "Multimedia",
 }
-
-DATABASE_ROUTERS = [
-    'spanglish.dbrouter.DBRouter',
-    'wipecardetailing.dbrouter.DBRouter',
-]
+#
+# DATABASE_ROUTERS = [
+#     'spanglish.dbrouter.DBRouter',
+#     'wipecardetailing.dbrouter.DBRouter',
+# ]
 
 # cache server
 
@@ -270,6 +271,9 @@ SIMPLE_JWT = {
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_TO = 'test@fedal.nl'
+
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
 
 # Nose unitests setting
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -283,7 +287,7 @@ NOSE_ARGS = [
     '--cover-xml',
     '--cover-xml-file=unittests.xml',
     "--ignore-files='^admin.py', '^\\.', '^_', '^setup\\.py$'",
-    # '--verbosity=4'
+    '--verbosity=2'
 ]
 
 FIXTURES = {

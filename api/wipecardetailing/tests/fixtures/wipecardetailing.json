@@ -14,7 +14,7 @@
         "city": "Amsterdam",
         "message": "hello i like to order Cola",
         "submitted": "2020-07-26T09:42:11Z",
-        "status": 1
+        "status": "SUCCESS"
     }
 },
 {
@@ -32,7 +32,7 @@
         "city": "Zaandam",
         "message": "hello i like to order Coffee",
         "submitted": "2020-07-26T09:43:38Z",
-        "status": 0
+        "status": "ERROR"
     }
 },
 {

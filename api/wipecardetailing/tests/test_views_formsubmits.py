@@ -3,6 +3,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
+from rest_framework_api_key.models import APIKey
 import logging
 
 logger = logging.getLogger('wipecardetailing')
@@ -13,13 +14,24 @@ class FormsubmitsViewTestClass(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """initalize the apiclient and the api irl. """
+        """initalize the apiclient and the api url. Also create the api-token."""
 
         logger.debug("%s started " % cls.__name__)
         cls.api_url = 'http://127.0.0.1:8000/wipecardetailing/formsubmit/'
 
         # create the apiclient object
         cls.api_client = APIClient(enforce_csrf_checks=True)
+
+        # create a token
+        api_key, key = APIKey.objects.create_key(name="wipecardetailings")
+        logger.debug("generated api-key: %s" % api_key)
+        logger.debug("generated key: %s" % key)
+
+        # api_key2 = APIKey.objects.get_from_key(key)
+        # logger.debug("generated api-key2: %s" % api_key2)
+
+        cls.api_client.credentials(HTTP_X_API_KEY=key)
+
 
     def test_get_three_formsubmits_200(self):
         """test the get request to the api, expects to get 3 objects in json response
@@ -31,12 +43,13 @@ class FormsubmitsViewTestClass(TestCase):
         status_code = response.status_code
         content = response.json()
 
+        # logger.debug("response header: %s" % response.__dict__)
         logger.debug("response: %s" % response['Content-Type'])
         logger.debug("response content: %s" % content)
 
         self.assertEquals(status_code, status.HTTP_200_OK)
         self.assertEquals(response['Content-Type'], 'application/json')
-        self.assertEquals(len(content), 3)
+        self.assertEquals(len(content), 2)
 
     def test_post_formsubmit_201(self):
         """post request to create a new formsubmit, expect to get back
