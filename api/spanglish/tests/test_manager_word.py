@@ -64,8 +64,8 @@ class WordsManagerTestClass(TestCase):
         directly, expect to get the same result as providing
         the en parameter.
         """
-        manager = WordManager()
-        data = WordManager.get_all_words_by_language(manager)
+
+        data = Word.words.get_all_words_by_language()
         records = []
         for d in data:
             records.append(d.word)

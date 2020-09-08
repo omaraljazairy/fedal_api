@@ -2,6 +2,7 @@
 
 from django.db import migrations, models
 from django.conf import settings
+from datetime import datetime
 
 class Migration(migrations.Migration):
 
@@ -18,14 +19,14 @@ class Migration(migrations.Migration):
                 ('formname', models.CharField(db_column='FormName', max_length=45)),
                 ('companyname', models.CharField(blank=True, db_column='CompanyName', max_length=45, null=True)),
                 ('customername', models.CharField(blank=True, db_column='CustomerName', max_length=45, null=True)),
-                ('email', models.CharField(db_column='Email', max_length=45)),  # Field name made lowercase.)),
+                ('email', models.EmailField(db_column='Email', max_length=45)),  # Field name made lowercase.)),
                 ('phonenumber', models.CharField(db_column='PhoneNr', blank=True, max_length=45, null=True)),
                 ('streetname', models.CharField(blank=True, db_column='Street', max_length=45, null=True)),
                 ('housenumber', models.CharField(blank=True, db_column='HouseNr', max_length=45, null=True)),
                 ('postcode', models.CharField(blank=True, db_column='Postcode', max_length=45, null=True)),
                 ('city', models.CharField(blank=True, db_column='City', max_length=45, null=True)),
                 ('message', models.TextField(blank=True, db_column='Message', max_length=254, null=True)),
-                ('submitted', models.DateTimeField(db_column='Submitted', auto_now_add=True)),
+                ('submitted', models.DateTimeField(db_column='Submitted', auto_now_add=False, default=datetime.now())),
                 ('status', models.CharField(db_column='Status', max_length=254, blank=False, null=False,
                                             default='PENDING')),
             ],
@@ -38,11 +39,12 @@ class Migration(migrations.Migration):
             name='Multimedia',
             fields=[
                 ('id', models.AutoField(db_column='Id', primary_key=True, serialize=False)),
-                ('title', models.CharField(db_column='Title', max_length=45)),
-                ('type', models.CharField(db_column='Type', max_length=15)),
-                ('addedbyuser', models.CharField(db_column='AddedByUser', max_length=45)),
-                ('added', models.DateTimeField(db_column='Added', auto_now_add=True)),
-                ('link', models.CharField(db_column='Link', max_length=255, unique=True)),
+                ('title', models.CharField(db_column='Title', max_length=45, null=False, blank=False)),
+                ('type', models.CharField(db_column='Type', max_length=15, null=False, blank=False)),
+                ('addedbyuser', models.PositiveSmallIntegerField(db_column='AddedByUser', null=False, blank=False)),
+                ('added', models.DateTimeField(db_column='Added', auto_now_add=False, default=datetime.now())),
+                ('link', models.URLField(db_column='Link', max_length=255, unique=True,
+                                         null=False, blank=False)),
                 ('socialmedianame', models.CharField(blank=True, db_column='SocialMediaName', max_length=45, null=True)),
             ],
             options={

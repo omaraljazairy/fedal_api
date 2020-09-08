@@ -31,7 +31,7 @@ class FormsubmitModelTestClass(TestCase):
             formname='Parking',
             companyname='my test company',
             email='foo@fedal.nl',
-            status=1
+            status="SUCCESS"
         )
         form_sumit.save()
 
@@ -41,7 +41,7 @@ class FormsubmitModelTestClass(TestCase):
         self.assertIsInstance(form_sumit, Formsubmits)
 
 
-    def test_applabel_formsumbit_spanglish(self):
+    def test_applabel(self):
         """expect the applabel to be wipecardetailing."""
 
         form_submit = Formsubmits.objects.get(pk=1)

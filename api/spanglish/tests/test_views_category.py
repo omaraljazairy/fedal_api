@@ -162,7 +162,7 @@ class CategoryViewTestClass(TestCase):
         expected_content = {
                 'id': 1,
                 'name': 'verb',
-                'created': '2020-03-15T14:29:37+01:00'
+                'created': '2020-03-15 14:29:37+0100'
         }
 
 

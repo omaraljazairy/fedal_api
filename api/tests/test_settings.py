@@ -228,6 +228,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S%z',
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticated',
@@ -310,4 +311,5 @@ FIXTURES = {
 # dump q: python3.6 manage.py dumpdata campaigns.adsSession campaigns.adsSessionMetadata campaigns.adsSessionHistory campaigns.Adsad campaigns.Adsparameters campaigns.Madspartner campaigns.Madszone campaigns.Backend --database=Q_read --indent 4 > campaigns/tests/fixtures/q.json
 # run test ../bin/python3.6 manage.py test --settings=tests.settings -s campaigns services/tests/
 # inspect_db ../bin/python manage.py inspectdb --database=spanglish > spanglish/models.py
+# wipecardetailing api-key: 7MMG9BDn.VArqTdzCNjtuRYORu0gm7V9TT9stvodj
 # ====================================================================

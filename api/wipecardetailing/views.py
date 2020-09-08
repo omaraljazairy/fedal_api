@@ -1,5 +1,5 @@
-from .models import Formsubmits
-from .serializers import FormSubmitsSerializer
+from .models import Formsubmits, Multimedia
+from .serializers import FormSubmitsSerializer, MultimediaSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
 from api.throttles import WipecardetailingRateThrottle
@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.cache import cache
 from services.email import send
 from rest_framework_api_key.permissions import HasAPIKey
+from rest_framework.permissions import IsAuthenticated
 from drf_yasg.utils import swagger_auto_schema
 import logging
 
@@ -15,24 +16,16 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', 10)
 logger = logging.getLogger(settings.AWS_LOGGER_NAME)
 
 class FormsubmitsView(generics.ListCreateAPIView):
-    """ post and get requests to the form without any restrictions. """
+    """ Get all the form data submitted. """
     permission_classes = [HasAPIKey]
     throttle_classes = (WipecardetailingRateThrottle,)
     name  = 'formsubmit-listcreate'
     serializer_class = FormSubmitsSerializer
 
-    @swagger_auto_schema(operation_description="Get all the form data submitted",
-                         security=[
-                             {
-                                 'ApiKeyAuth':
-                                 [
-                                     'Uses the X-API-KEY param name in the header.'
-                                 ]
-                             }
-                         ],
-                         )
+    @swagger_auto_schema(security=[{'ApiKeyAuth': [
+        'Uses the X-API-KEY param name in the header.']}],)
     def get(self, request, *args, **kwargs):
-        """override the get to customize the data returned and add logging. """
+        """Takes no aguments at the moment and returns all the submitted forms. """
 
         logger.debug("request received: %s" % request.GET)
 
@@ -42,18 +35,11 @@ class FormsubmitsView(generics.ListCreateAPIView):
 
         return Response(data, status=status.HTTP_200_OK)
 
-    @swagger_auto_schema(operation_description="Posts a form data",
-                         security=[
-                             {
-                                 'ApiKeyAuth':
-                                     [
-                                         'Uses the X-API-KEY param name in the header.'
-                                     ]
-                             }
-                         ],
-                         )
+    @swagger_auto_schema(security=[{'ApiKeyAuth': [
+        'Uses the X-API-KEY param name in the header.']}],)
     def post(self, request, *args, **kwargs):
-        """save the submitted form data in the database and send it as an email.
+        """
+        Saves the submitted form data in the database and send it as an email.
         The http statuscode returned will be 201 if success.
         """
 
@@ -96,6 +82,103 @@ class FormsubmitsView(generics.ListCreateAPIView):
         if serializer.is_valid():
             serializer.save()
             logger.debug("form saved")
+            return Response({'Msg': 'OK'}, status=status.HTTP_201_CREATED)
+        else:
+            error = serializer.errors
+            # convert the error to a list to get the message value
+            error_value = list(error.values())
+            err_msg = error_value[0][0]
+
+            logger.error('error message: %s' % error)
+            logger.error('error value: %s' % err_msg)
+            logger.debug('default error message: %s', serializer.error_messages)
+
+            return Response({'Msg': err_msg}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MultmediaListView(generics.ListAPIView):
+    """
+    Takes no or multiple parametes and returns a list of the
+    multimedia items. It requires the api-key only to fetch data.
+    """
+
+    permission_classes = [HasAPIKey]
+    throttle_classes = (WipecardetailingRateThrottle,)
+    serializer_class = MultimediaSerializer
+    name  = 'multimedia-list'
+
+    @swagger_auto_schema(security=[{'ApiKeyAuth': [
+        'Uses the X-API-KEY param name in the header.']}],)
+    def get(self, request, *args, **kwargs):
+        """
+        :param request: non or multiple params to form the queryset filter.
+        :param args: non expected
+        :param kwargs: non expected
+        :return: json response with the list of items or one item
+        """
+
+        # create a dict object from the received parameters which have no
+        # empty value and in the expected valid parametes.
+        # better to do this validation here in the view before reaching the serializer.
+        valid_params = ['id', 'title', 'type', 'socialmedianame']
+        query_string = {k.lower() :v for k,v in request.query_params.items() if v and k in valid_params}
+        logger.debug("request received: %s" % request.query_params)
+
+        logger.debug("query_string: %s" % query_string)
+
+        #queryset = Multimedia.objects.filter(type=query_string['type'])
+        queryset = Multimedia.linksmanager.get_links(**query_string)
+        serialized = MultimediaSerializer(queryset, many=True)
+
+        data = {'data': serialized.data}
+        logger.debug("queryset: %s" % data)
+
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
+
+class MultimediaCreateView(generics.CreateAPIView):
+    """Creates a socialmedia link record.
+
+    It is restricted to authenticated users only. User must
+    login first to upload an link. This is not for uploading images.
+    The authenticated user pk will be used by the addedbyuser attribute.
+    """
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = (WipecardetailingRateThrottle,)
+    serializer_class = MultimediaSerializer
+    name  = 'multimedia-list'
+
+    @swagger_auto_schema(security=[{'Bearer': [
+        'Uses the Athentication param name in the header with the Bearer Token as value.']}],)
+    def post(self, request, *args, **kwargs):
+        """Saves the socialmedia link for Authenticated users only.
+
+        Get the userid from the request.
+        copy the request object because it is immutable. We need to provide the
+        addedbyuser attribute with the userid.
+        create the object and use the userid as the addbyuser attribute before
+        passing it to the serializer.
+        :return 201 if success, otherwise 404 with an error message.
+        """
+
+        # create a new dict from the request object to append the status value with it.
+        posted_data = {k.lower(): v for k, v in request.data.items()}
+        logger.debug('data received: %s' % posted_data)
+
+        # get the authenticated user from the request object.
+        user = request.user
+        logger.debug("user received: %s" % user)
+        logger.debug("user pk received: %s" % user.pk)
+
+        # append the addedbyuser key to the posted_data with the userid value.
+        posted_data.update({'addedbyuser': 2})
+        logger.debug("final posted_data: %s" % posted_data)
+
+        serializer = MultimediaSerializer(data=posted_data)
+        if serializer.is_valid():
+            serializer.save()
+            logger.debug("data is valid and saved")
             return Response({'Msg': 'OK'}, status=status.HTTP_201_CREATED)
         else:
             error = serializer.errors

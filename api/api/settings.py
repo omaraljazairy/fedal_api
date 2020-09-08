@@ -243,6 +243,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S%z',
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
@@ -265,7 +267,9 @@ REST_FRAMEWORK = {
         'wipecardetailing': '100/day',
     },
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+
 }
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1420),
@@ -301,6 +305,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# DATETIME_FORMAT = "%Y-%m-%d %H:%M:%s"
+# DATETIME_FORMAT = 'N j, Y, p'
 
 
 # Static files (CSS, JavaScript, Images)

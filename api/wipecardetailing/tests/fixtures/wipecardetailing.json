@@ -1,5 +1,60 @@
 [
 {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$5p89j6BpmlIW$eYfWl8ej3807P9bHInvQOXs/pjKmfXZeT3c3ho5sOPU=",
+        "last_login": "2020-08-29T20:41:45.848Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@fedal.nl",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-03-15T20:05:04.187Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$RlxsIFjwvlZ6$53PKuX+UIxFIdHnKyDjkZEDI51PR1fAlQGSoJqktrcA=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "omar",
+        "first_name": "Omar",
+        "last_name": "Aljazairy",
+        "email": "omar@fedal.nl",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-03-15T20:12:14Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$5t3u5MOTErZ6$g4wDzvH8qgZ8gueqVmIFFB6yaZKL/irhXyd3p61NCMA=",
+        "last_login": "2020-08-18T08:30:57.975Z",
+        "is_superuser": true,
+        "username": "Superman",
+        "first_name": "",
+        "last_name": "",
+        "email": "superman@fedal.nl",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-08-18T08:30:44.044Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+
+{
     "model": "wipecardetailing.formsubmits",
     "pk": 1,
     "fields": {
@@ -39,9 +94,9 @@
     "model": "wipecardetailing.multimedia",
     "pk": 1,
     "fields": {
-        "title": "CarWash",
+        "title": "First Car Wash",
         "type": "Image",
-        "addedbyuser": "Omar",
+        "addedbyuser": 2,
         "added": "2020-07-26T09:55:57Z",
         "link": "https://fedal.net/carwash.jpg",
         "socialmedianame": null
@@ -51,9 +106,9 @@
     "model": "wipecardetailing.multimedia",
     "pk": 2,
     "fields": {
-        "title": "CarWash",
+        "title": "Car Wash2",
         "type": "SocialMediaLink",
-        "addedbyuser": "Hashim",
+        "addedbyuser": 3,
         "added": "2020-07-26T09:57:15Z",
         "link": "https://youtube.com/wejhsvgerv32vg",
         "socialmedianame": "youtube"
@@ -65,7 +120,7 @@
     "fields": {
         "title": "Tankstation Cleaner",
         "type": "SocialMediaLink",
-        "addedbyuser": "Mustafa",
+        "addedbyuser": 2,
         "added": "2020-07-26T09:58:19Z",
         "link": "https://facebook.com/wejhsvgerv32vg",
         "socialmedianame": "facebook"

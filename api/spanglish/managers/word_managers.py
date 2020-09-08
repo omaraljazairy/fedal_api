@@ -42,8 +42,7 @@ class WordQuerySet(models.QuerySet):
             'translation': 'translation',
             'language': 'language',
         }
-        from spanglish.models import Word
-        result = Word.words.raw(sql, params, translations)
+        result = self.raw(sql, params, translations)
 
         # logger.debug("result returned: %s" % result)
 

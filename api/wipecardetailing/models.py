@@ -1,4 +1,8 @@
+
 from django.db import models
+from django.contrib.auth.models import User
+from .managers.multimedia_manager import MultimediaManager
+from datetime import datetime
 
 # Create your models here.
 
@@ -12,6 +16,20 @@ from django.db import models
 from django.db import models
 APP_LABEL = 'wipecardetailing'
 
+class LinkTypes(models.TextChoices):
+    """ define the linktype of the multimedia object to one choice. """
+    IMAGE = 'Image', 'Image'
+    VIDEO = 'Video', 'Video'
+    SOCIALMEDIALINK = 'SocialMediaLink', 'SocialMediaLink'
+
+class EmailStatus(models.TextChoices):
+    """
+    Define the email status that will be set when sending an email.
+    The defined status has to be SUCCESS, ERROR, PENDING.
+    """
+    SUCCESS = 'SUCCESS', 'SECCESS'
+    ERROR = 'ERROR', 'ERROR'
+    PENDING = 'PENDING', 'PENDING'
 
 class Formsubmits(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
@@ -25,9 +43,9 @@ class Formsubmits(models.Model):
     postcode = models.CharField(db_column='Postcode', max_length=45, blank=True, null=True)  # Field name made lowercase.
     city = models.CharField(db_column='City', max_length=45, blank=True, null=True)  # Field name made lowercase.
     message = models.TextField(db_column='Message', max_length=254, blank=True, null=True)  # Field name made lowercase.
-    submitted = models.DateTimeField(auto_now_add=True, db_column='Submitted')  # Field name made lowercase.
-    # status = models.SmallIntegerField(db_column='Status')  # Field name made lowercase.
-    status = models.CharField(db_column='Status', max_length=254, blank=False, null=False, default='PENDING')
+    submitted = models.DateTimeField(auto_now_add=False, db_column='Submitted', default=datetime.now())  # Field name made lowercase.
+    status = models.CharField(db_column='Status', max_length=254, blank=False, null=False,
+                              choices=EmailStatus.choices, default=EmailStatus.PENDING)
 
 
     class Meta:
@@ -35,13 +53,17 @@ class Formsubmits(models.Model):
         db_table = 'FormSubmits'
         app_label = APP_LABEL
 
+    def __str__(self):
+        """Returns a representation text of the object."""
+        return self.formname + ' ' + self.companyname + ' ' + str(self.submitted) + ' ' + self.status
+
 class Multimedia(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    title = models.CharField(db_column='Title', max_length=45)  # Field name made lowercase.
-    type = models.CharField(db_column='Type', max_length=15)  # Field name made lowercase.
-    addedbyuser = models.CharField(db_column='AddedByUser', max_length=45)  # Field name made lowercase.
-    added = models.DateTimeField(auto_now_add=True, db_column='Added')  # Field name made lowercase.
-    link = models.CharField(db_column='Link', unique=True, max_length=255)  # Field name made lowercase.
+    title = models.CharField(db_column='Title', max_length=45, null=False, blank=False)  # Field name made lowercase.
+    type = models.CharField(db_column='Type', max_length=15, null=False, blank=False, choices=LinkTypes.choices)  # Field name made lowercase.
+    addedbyuser = models.PositiveSmallIntegerField(db_column='AddedByUser', null=False, blank=False)
+    added = models.DateTimeField(auto_now_add=False, db_column='Added', default=datetime.now())  # Field name made lowercase.
+    link = models.URLField(db_column='Link', unique=True, max_length=255, null=False, blank=False)
     socialmedianame = models.CharField(db_column='SocialMediaName', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -49,3 +71,20 @@ class Multimedia(models.Model):
         db_table = 'Multimedia'
         unique_together = (('title', 'type'),)
         app_label = APP_LABEL
+
+    # because cross multiple databsase foreign keyis not allowed in django, i need to link the auth users
+    # to the addedbyuser column. this is why i created this property to show the user's fullname instead of
+    # the id.
+    @property
+    def uploaded_by(self):
+        user = User.objects.get(pk=self.addedbyuser)
+        return user.get_full_name()
+
+
+    def __str__(self):
+        """Returns a representation text of the object."""
+        return self.title + ' ' + self.type + ' ' + str(self.addedbyuser) + ' ' + str(self.added)
+
+   # defined object managers
+    objects = models.Manager()
+    linksmanager = MultimediaManager()

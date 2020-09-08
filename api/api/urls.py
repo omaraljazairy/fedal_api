@@ -33,5 +33,5 @@ urlpatterns = [
     path('api/token/verify/', TokenVerifyView.as_view()),
     url(r'^swagger(?P<format>\.json|\.yaml)$', views.schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', views.schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    url(r'^redoc/$', views.schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    url(r'^doc/$', views.schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
