@@ -125,5 +125,29 @@
         "link": "https://facebook.com/wejhsvgerv32vg",
         "socialmedianame": "facebook"
     }
+},
+{
+    "model": "wipecardetailing.multimedia",
+    "pk": 4,
+    "fields": {
+        "title": "Tankstation Shell Cleaner",
+        "type": "SocialMediaLink",
+        "addedbyuser": 2,
+        "added": "2020-08-26T10:58:19Z",
+        "link": "https://facebook.com/wejhsvgerv32v1",
+        "socialmedianame": "youtube"
+    }
+},
+{
+    "model": "wipecardetailing.multimedia",
+    "pk": 5,
+    "fields": {
+        "title": "Tankstation BP Cleaner",
+        "type": "SocialMediaLink",
+        "addedbyuser": 2,
+        "added": "2020-09-26T09:58:19Z",
+        "link": "https://facebook.com/wejhsvgerv32v2",
+        "socialmedianame": "youtube"
+    }
 }
 ]

@@ -22,6 +22,7 @@ class MultimediaViewTestClass(TestCase):
         logger.debug("%s started " % cls.__name__)
         cls.api_url = 'http://127.0.0.1:8000/wipecardetailing/multimedia/'
         cls.api_url_post = 'http://127.0.0.1:8000/wipecardetailing/multimedia/post/'
+        cls.api_url_detail = 'http://127.0.0.1:8000/wipecardetailing/multimedia/detail/'
 
         # authenticated user
         username = 'tester'
@@ -186,7 +187,8 @@ class MultimediaViewTestClass(TestCase):
         #     }
         # ]
         self.assertEquals(status_code, 200)
-        self.assertEquals(len(content), 3)
+        # self.assertEquals(len(content), 3)
+        self.assertGreaterEqual(len(content), 3)
 
 
     def test_get_multimedia_wuith_querystring_200(self):
@@ -318,6 +320,124 @@ class MultimediaViewTestClass(TestCase):
 
         self.assertEquals(status_code, status.HTTP_401_UNAUTHORIZED)
 
+
+    def test_retrieve_multimedia_200(self):
+        """
+        Make Get request with the id in the url only that returns one item
+        with status code 200.
+        """
+        url = self.api_url_detail + '1/'
+        response = self.api_client_jwt.get(url)
+        status_code = response.status_code
+        content = response.data if status_code == 200 else None
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, 200)
+
+
+    def test_retrieve_multimedia_apikey_200(self):
+        """
+        Make Get request with the id using the api-key, expects to returns
+        one item with status code 200.
+        """
+        url = self.api_url_detail + '1/'
+        response = self.api_client_apikey.get(url)
+        status_code = response.status_code
+        content = response.data if status_code == 200 else None
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, 200)
+
+
+    def test_patch_multimedia_200(self):
+        """
+        Make a Patch request with a change of the title. Expect success
+        with status code 200
+        """
+
+        url = self.api_url_detail + '4/'
+        data = {'title': 'Tankstation Shell 2 Cleaner'}
+        response = self.api_client_jwt.patch(url, data)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, status.HTTP_200_OK)
+
+
+    def test_put_multimedia_not_allowed_405(self):
+        """
+        Make a Put request with a change of the title. Expect an error
+        with status code 405 because Put is not allowed
+        """
+
+        url = self.api_url_detail + '4/'
+        data = {'title': 'Tankstation Shell 4 Cleaner'}
+        response = self.api_client_jwt.put(url, data)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def test_patch_multimedia_apikey_unautherized_401(self):
+        """
+        Make a Patch request with an apikey. Expect error
+        with status code 401
+        """
+
+        url = self.api_url_detail + '4/'
+        data = {'title': 'Tankstation Shell 3 Cleaner'}
+        response = self.api_client_apikey.patch(url, data)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, status.HTTP_401_UNAUTHORIZED)
+
+
+    def test_delete_multimedia_200(self):
+        """
+        Make a Delete request for the id 5. Expect success
+        with status code 200.
+        """
+
+        url = self.api_url_detail + '5/'
+        response = self.api_client_jwt.delete(url)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, status.HTTP_204_NO_CONTENT)
+
+
+    def test_delete_multimedia_apikey_unautherized_401(self):
+        """
+        Make a Delete request for the id 5 with an apikey only. Expect error
+        with response 401.
+        """
+
+        url = self.api_url_detail + '5/'
+        response = self.api_client_apikey.delete(url)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEqual(status_code, status.HTTP_401_UNAUTHORIZED)
 
     @classmethod
     def tearDownClass(cls):

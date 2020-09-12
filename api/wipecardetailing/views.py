@@ -7,8 +7,9 @@ from django.conf import settings
 from django.core.cache import cache
 from services.email import send
 from rest_framework_api_key.permissions import HasAPIKey
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from drf_yasg.utils import swagger_auto_schema
+from decorators.timem import time_memory
 import logging
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', 10)
@@ -96,7 +97,7 @@ class FormsubmitsView(generics.ListCreateAPIView):
             return Response({'Msg': err_msg}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class MultmediaListView(generics.ListAPIView):
+class MultmediaListView(generics.GenericAPIView):
     """
     Takes no or multiple parametes and returns a list of the
     multimedia items. It requires the api-key only to fetch data.
@@ -109,6 +110,7 @@ class MultmediaListView(generics.ListAPIView):
 
     @swagger_auto_schema(security=[{'ApiKeyAuth': [
         'Uses the X-API-KEY param name in the header.']}],)
+    @time_memory
     def get(self, request, *args, **kwargs):
         """
         :param request: non or multiple params to form the queryset filter.
@@ -191,3 +193,26 @@ class MultimediaCreateView(generics.CreateAPIView):
             logger.debug('default error message: %s', serializer.error_messages)
 
             return Response({'Msg': err_msg}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MultimediaDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Takes a Get, Patch and Delete for authenticated users.
+
+    use a get request with the id of the object in the url to retrieve
+    the object details.
+
+    also takes a patch and delete requests to only users who have the add and
+    delete rights.
+
+    the put request is not allowed at this moment.
+    """
+
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    queryset = Multimedia.objects.all()
+    serializer_class = MultimediaSerializer
+
+    def put(self, request, *args, **kwargs):
+        """Returns 405 because it's not allowed. use patch instead"""
+
+        return Response({'Msg':'Use PATCH for updates'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
