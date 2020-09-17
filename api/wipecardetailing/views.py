@@ -2,6 +2,7 @@ from .models import Formsubmits, Multimedia
 from .serializers import FormSubmitsSerializer, MultimediaSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser
 from api.throttles import WipecardetailingRateThrottle
 from django.conf import settings
 from django.core.cache import cache
@@ -150,6 +151,7 @@ class MultimediaCreateView(generics.CreateAPIView):
     throttle_classes = (WipecardetailingRateThrottle,)
     serializer_class = MultimediaSerializer
     name  = 'multimedia-list'
+    parser_classes = (MultiPartParser,)
 
     @swagger_auto_schema(security=[{'Bearer': [
         'Uses the Athentication param name in the header with the Bearer Token as value.']}],)
@@ -168,10 +170,26 @@ class MultimediaCreateView(generics.CreateAPIView):
         posted_data = {k.lower(): v for k, v in request.data.items()}
         logger.debug('data received: %s' % posted_data)
 
+        # if the type is Image, there should then be a file sent in the post.
+        # make the link value the url of the file to be downloaded.
+        # otherwise if the type is image and there is no image file sent, return 400
+        # if posted_data['type'] == 'Image':
+        #     if request.data.get('file', None):
+        #         #posted_data['link'] = 'http://localhost/' + request.data['file']
+        #         file_obj = request.data['file']
+        #         logger.debug('file received: %s' % file_obj.__dict__)
+        #         logger.debug('file name received: %s' % file_obj._name)
+        #         posted_data['link'] = 'http://localhost/' + file_obj._name
+        #     else:
+        #         err_msg = "type Image but there is no image submitted"
+        #         return Response({'Msg': err_msg}, status=status.HTTP_400_BAD_REQUEST)
+
         # get the authenticated user from the request object.
         user = request.user
         logger.debug("user received: %s" % user)
         logger.debug("user pk received: %s" % user.pk)
+        if posted_data.get('type', False):
+            posted_data['type'] = posted_data['type'].upper()
 
         # append the addedbyuser key to the posted_data with the userid value.
         posted_data.update({'addedbyuser': 2})
@@ -180,8 +198,14 @@ class MultimediaCreateView(generics.CreateAPIView):
         serializer = MultimediaSerializer(data=posted_data)
         if serializer.is_valid():
             serializer.save()
-            logger.debug("data is valid and saved")
-            return Response({'Msg': 'OK'}, status=status.HTTP_201_CREATED)
+            data = serializer.data
+            logger.debug("data is valid and saved: %s", data)
+            msg = {
+                'Msg': 'OK',
+                'Id': data['id'],
+                'Link': data['link']
+            }
+            return Response(msg, status=status.HTTP_201_CREATED)
         else:
             error = serializer.errors
             # convert the error to a list to get the message value

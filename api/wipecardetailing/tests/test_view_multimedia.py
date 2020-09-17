@@ -5,6 +5,9 @@ from rest_framework.test import APIClient
 from django.contrib.auth.models import User, Group
 from rest_framework import status
 from rest_framework_api_key.models import APIKey
+import tempfile
+from PIL import Image
+import io
 import logging
 
 logger = logging.getLogger('wipecardetailing')
@@ -53,6 +56,13 @@ class MultimediaViewTestClass(TestCase):
         group.user_set.add(user)
         group2.user_set.add(user2)
 
+        # create an imagefile to be saved and used for attachments.
+        cls.attachment_image = io.BytesIO()  # tempfile.NamedTemporaryFile(suffix='.jpg')
+        cls.attachment_image.name = 'testImage.jpg'
+        image_file = Image.new('RGB', (30, 10), (255, 214, 107))
+        image_file.save(cls.attachment_image, 'jpeg')
+
+        cls.attachment_image.seek(0)
 
         # create a token
         api_key, key = APIKey.objects.create_key(name="wipecardetailings")
@@ -215,7 +225,8 @@ class MultimediaViewTestClass(TestCase):
                 "uploaded_by": "Omar Aljazairy",
                 "added": "2020-07-26 11:58:19+0200",
                 "link": "https://facebook.com/wejhsvgerv32vg",
-                "socialmedianame": "facebook"
+                "socialmedianame": "facebook",
+                "file": None
             }
         ]
         self.assertEquals(status_code, 200)
@@ -231,7 +242,7 @@ class MultimediaViewTestClass(TestCase):
 
         data = {
             'title': 'a view to kill',
-            'type': 'SocialMediaLink',
+            'type': 'SOCIALMEDIALINK',
             'link': 'http://fedal.nl',
             'socialmedianame': 'facebook'
         }
@@ -282,12 +293,83 @@ class MultimediaViewTestClass(TestCase):
 
         data = {
             'Title': 'a view to kill 2',
-            'Type': 'SocialMediaLink',
+            'Type': 'SOCIALMEDIALINK',
             'Link': 'http://fedal.nl',
             'Socialmedianame': 'facebook'
         }
 
         response = self.api_client_jwt.post(self.api_url_post, data=data)
+        status_code = response.status_code
+        content = response.json()
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_201_CREATED)
+        self.assertEquals(response['Content-Type'], 'application/json')
+
+
+    def xtest_post_multimedia_valid_request_lowercase_values_201(self):
+        """
+        post a valid request with all required parameters with lowercase letters.
+        expect to get back response 201.
+        """
+
+        data = {
+            'Title': 'a view to kill 4',
+            'Type': 'socialmedialink',
+            'Link': 'http://fedal.nl',
+            'Socialmedianame': 'facebook'
+        }
+
+        response = self.api_client_jwt.post(self.api_url_post, data=data)
+        status_code = response.status_code
+        content = response.json()
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_201_CREATED)
+        self.assertEquals(response['Content-Type'], 'application/json')
+
+    def test_post_multimedia_invalid_request_type_image_without_file_400(self):
+        """
+        post a post request with all required parameters and type is image but without
+        sending an image file. expect response 400 bad request
+        """
+
+        data = {
+            'Title': 'a view to kill 3',
+            'Type': 'Image',
+            'Link': 'http://fedal.nl/3',
+            'Socialmedianame': 'facebook'
+        }
+
+        response = self.api_client_jwt.post(self.api_url_post, data=data)
+        status_code = response.status_code
+        content = response.json()
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEquals(response['Content-Type'], 'application/json')
+
+    def test_post_multimedia_valid_request_type_image_with_file_201(self):
+        """
+        post a post request with all required parameters and type is image with
+        an image file. expect response 201
+        """
+
+        data = {
+            'Title': 'a view to kill 3',
+            'Type': 'Image',
+            'Link': 'http://fedal.nl/3',
+            'Socialmedianame': 'facebook',
+            'file': self.attachment_image
+        }
+
+        response = self.api_client_jwt.post(self.api_url_post, data=data, format='multipart')
         status_code = response.status_code
         content = response.json()
 

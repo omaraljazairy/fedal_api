@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
-    # 'rest_framework_swagger',
+    'corsheaders',
     'drf_yasg',
     'rest_framework',
     'spanglish',
@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -330,6 +331,8 @@ EMAIL_USE_TLS = bool(os.environ['EMAIL_STRATO_TLS'])
 EMAIL_TO = os.environ['EMAIL_TO']
 # API-Key
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+
+CORS_ORIGIN_ALLOW_ALL =  True
 
 SWAGGER_SETTINGS = {
    'SECURITY_DEFINITIONS': {

@@ -16,11 +16,16 @@ from datetime import datetime
 from django.db import models
 APP_LABEL = 'wipecardetailing'
 
+def upload_path(instance, filename):
+    """Takes an instance and the id to return a path for an uploaded image."""
+
+    return '/'.join(['images', str(filename)])
+
 class LinkTypes(models.TextChoices):
     """ define the linktype of the multimedia object to one choice. """
-    IMAGE = 'Image', 'Image'
-    VIDEO = 'Video', 'Video'
-    SOCIALMEDIALINK = 'SocialMediaLink', 'SocialMediaLink'
+    IMAGE = 'IMAGE', 'Image'
+    VIDEO = 'VIDEO', 'Video'
+    SOCIALMEDIALINK = 'SOCIALMEDIALINK', 'SocialMediaLink'
 
 class EmailStatus(models.TextChoices):
     """
@@ -65,6 +70,8 @@ class Multimedia(models.Model):
     added = models.DateTimeField(auto_now_add=False, db_column='Added', default=datetime.now())  # Field name made lowercase.
     link = models.URLField(db_column='Link', unique=True, max_length=255, null=False, blank=False)
     socialmedianame = models.CharField(db_column='SocialMediaName', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    file = models.ImageField(db_column='File', blank=True, null=True)
+
 
     class Meta:
         managed = False

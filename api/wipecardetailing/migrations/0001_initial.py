@@ -46,6 +46,7 @@ class Migration(migrations.Migration):
                 ('link', models.URLField(db_column='Link', max_length=255, unique=True,
                                          null=False, blank=False)),
                 ('socialmedianame', models.CharField(blank=True, db_column='SocialMediaName', max_length=45, null=True)),
+                ('file', models.ImageField(db_column='File', blank=True, null=True))
             ],
             options={
                 'db_table': 'Multimedia',
