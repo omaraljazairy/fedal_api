@@ -45,6 +45,7 @@ class MultimediaSerializer(serializers.ModelSerializer):
 
     # make it write_only because it doesn't need to be returned to the view
     addedbyuser = serializers.IntegerField(write_only=True)
+    file = serializers.ImageField(write_only=True, required=False)
     type = serializers.CharField(required=True)
 
     def validate(self, data):
@@ -60,20 +61,25 @@ class MultimediaSerializer(serializers.ModelSerializer):
                 #if file isn't available, rais an exception
                 raise serializers.ValidationError('Image type should have an image file')
             else:
-                file_obj = data['file']
-                logger.debug('file received: %s' % file_obj.__dict__)
-                logger.debug('file name received: %s' % file_obj._name)
-                data['link'] = 'http://localhost/' + file_obj._name
-
                 return data
         else:
             return data
 
-
     class Meta:
         """Specify the model to use and the fields to serialize."""
         model = Multimedia
-        fields = ['id', 'title', 'type', 'uploaded_by', 'addedbyuser', 'added', 'link', 'socialmedianame', 'file']
+        fields = [
+            'id',
+            'title',
+            'type',
+            'uploaded_by',
+            'addedbyuser',
+            'added',
+            'link',
+            'socialmedianame',
+            'file',
+            'download_url'
+        ]
 
         # they extra kwargs will be returned in the view during the validation before the save.
         extra_kwargs = {
@@ -89,7 +95,6 @@ class MultimediaSerializer(serializers.ModelSerializer):
             },
             'link': {
                 'error_messages': {
-                    'required': 'LinkUrl field is required',
                     'invalid': 'Invalid link url'
                 }
             }

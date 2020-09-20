@@ -5,7 +5,6 @@ from rest_framework.test import APIClient
 from django.contrib.auth.models import User, Group
 from rest_framework import status
 from rest_framework_api_key.models import APIKey
-import tempfile
 from PIL import Image
 import io
 import logging
@@ -220,13 +219,13 @@ class MultimediaViewTestClass(TestCase):
         expected_content = [
             {
                 "id": 3,
+                "download_url": None,
                 "title": "Tankstation Cleaner",
                 "type": "SocialMediaLink",
                 "uploaded_by": "Omar Aljazairy",
                 "added": "2020-07-26 11:58:19+0200",
                 "link": "https://facebook.com/wejhsvgerv32vg",
                 "socialmedianame": "facebook",
-                "file": None
             }
         ]
         self.assertEquals(status_code, 200)
@@ -372,12 +371,22 @@ class MultimediaViewTestClass(TestCase):
         response = self.api_client_jwt.post(self.api_url_post, data=data, format='multipart')
         status_code = response.status_code
         content = response.json()
+        expected_keys = sorted(['Msg', 'Id', 'Link'])
+        returned_keys = sorted(list(content.keys()))
+        returned_values = all(list(content.values()))
+
+        #expected_download_url = 'http://192.168.178.25//media/' + self.attachment_image.__dict__
+        # expected_esponse_content = {'Msg': 'OK', 'Id': content['Id'], 'Link': expected_download_url}
 
         logger.debug("response: %s" % response)
         logger.debug("content: %s" % content)
+        logger.debug("returned_values: %s" % returned_values)
+        #logger.debug("attachment name: %s" % self.attachment_image.__dict__)
 
         self.assertEquals(status_code, status.HTTP_201_CREATED)
         self.assertEquals(response['Content-Type'], 'application/json')
+        self.assertEquals(expected_keys, returned_keys)
+        self.assertTrue(returned_values) # expect all values to be True
 
 
     def test_post_multimedia_with_apikey_unauthenticated_401(self):

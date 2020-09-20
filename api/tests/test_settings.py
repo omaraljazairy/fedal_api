@@ -231,6 +231,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "tests", "media")
+MEDIA_DOWNLOAD_HOST = test_env.DOWNLOAD_LINK_HOST
+DOWNLOAD_IMAGE_URI = test_env.DOWNLOAD_LINK_HOST + MEDIA_URL
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S%z',

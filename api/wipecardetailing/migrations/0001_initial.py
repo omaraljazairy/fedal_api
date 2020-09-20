@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('addedbyuser', models.PositiveSmallIntegerField(db_column='AddedByUser', null=False, blank=False)),
                 ('added', models.DateTimeField(db_column='Added', auto_now_add=False, default=datetime.now())),
                 ('link', models.URLField(db_column='Link', max_length=255, unique=True,
-                                         null=False, blank=False)),
+                                         null=True, blank=True)),
                 ('socialmedianame', models.CharField(blank=True, db_column='SocialMediaName', max_length=45, null=True)),
                 ('file', models.ImageField(db_column='File', blank=True, null=True))
             ],

@@ -318,6 +318,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_DOWNLOAD_HOST = os.environ['DOWNLOAD_LINK_HOST']
+DOWNLOAD_IMAGE_URI = MEDIA_DOWNLOAD_HOST + 'wipecardetailing' + MEDIA_URL
+print("Media_download_host ", MEDIA_DOWNLOAD_HOST)
 
 # Email setting
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

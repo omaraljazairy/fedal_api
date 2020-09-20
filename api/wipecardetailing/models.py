@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from .managers.multimedia_manager import MultimediaManager
 from datetime import datetime
+from django.conf import settings
 
 # Create your models here.
 
@@ -15,11 +16,6 @@ from datetime import datetime
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 APP_LABEL = 'wipecardetailing'
-
-def upload_path(instance, filename):
-    """Takes an instance and the id to return a path for an uploaded image."""
-
-    return '/'.join(['images', str(filename)])
 
 class LinkTypes(models.TextChoices):
     """ define the linktype of the multimedia object to one choice. """
@@ -68,7 +64,7 @@ class Multimedia(models.Model):
     type = models.CharField(db_column='Type', max_length=15, null=False, blank=False, choices=LinkTypes.choices)  # Field name made lowercase.
     addedbyuser = models.PositiveSmallIntegerField(db_column='AddedByUser', null=False, blank=False)
     added = models.DateTimeField(auto_now_add=False, db_column='Added', default=datetime.now())  # Field name made lowercase.
-    link = models.URLField(db_column='Link', unique=True, max_length=255, null=False, blank=False)
+    link = models.URLField(db_column='Link', unique=True, max_length=255, null=True, blank=True)
     socialmedianame = models.CharField(db_column='SocialMediaName', max_length=45, blank=True, null=True)  # Field name made lowercase.
     file = models.ImageField(db_column='File', blank=True, null=True)
 
@@ -86,6 +82,13 @@ class Multimedia(models.Model):
     def uploaded_by(self):
         user = User.objects.get(pk=self.addedbyuser)
         return user.get_full_name()
+
+    # return the download url of an image if the type is IMAGE.
+    @property
+    def download_url(self):
+        if self.file:
+            url = settings.DOWNLOAD_IMAGE_URI + str(self.file)
+            return url
 
 
     def __str__(self):

@@ -38,7 +38,7 @@ class MultimediasSerializerTestClass(TestCase):
                 'added',
                 'link',
                 'socialmedianame',
-                'file'
+                'download_url'
             ]
         )
         logger.debug("serialized data Multimedias: %s " % serialized_keys)

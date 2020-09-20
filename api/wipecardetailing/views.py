@@ -203,7 +203,7 @@ class MultimediaCreateView(generics.CreateAPIView):
             msg = {
                 'Msg': 'OK',
                 'Id': data['id'],
-                'Link': data['link']
+                'Link': data.get('download_url', False) if data['type'] == 'IMAGE' else data['link']
             }
             return Response(msg, status=status.HTTP_201_CREATED)
         else:
