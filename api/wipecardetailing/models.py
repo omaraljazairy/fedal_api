@@ -64,7 +64,7 @@ class Multimedia(models.Model):
     type = models.CharField(db_column='Type', max_length=15, null=False, blank=False, choices=LinkTypes.choices)  # Field name made lowercase.
     addedbyuser = models.PositiveSmallIntegerField(db_column='AddedByUser', null=False, blank=False)
     added = models.DateTimeField(auto_now_add=False, db_column='Added', default=datetime.now())  # Field name made lowercase.
-    link = models.URLField(db_column='Link', unique=True, max_length=255, null=True, blank=True)
+    socialmedialink = models.URLField(db_column='SocialMediaLink', unique=True, max_length=255, null=True, blank=True)
     socialmedianame = models.CharField(db_column='SocialMediaName', max_length=45, blank=True, null=True)  # Field name made lowercase.
     file = models.ImageField(db_column='File', blank=True, null=True)
 

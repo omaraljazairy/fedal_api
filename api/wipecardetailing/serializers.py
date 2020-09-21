@@ -75,7 +75,7 @@ class MultimediaSerializer(serializers.ModelSerializer):
             'uploaded_by',
             'addedbyuser',
             'added',
-            'link',
+            'socialmedialink',
             'socialmedianame',
             'file',
             'download_url'
@@ -93,7 +93,7 @@ class MultimediaSerializer(serializers.ModelSerializer):
                     'required': 'Type field is required'
                 }
             },
-            'link': {
+            'socialmedialink': {
                 'error_messages': {
                     'invalid': 'Invalid link url'
                 }

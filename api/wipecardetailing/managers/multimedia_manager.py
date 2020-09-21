@@ -27,7 +27,7 @@ class MultimediaQuerySet(models.QuerySet):
         # create a string for the where clause that loops through the params list
         # and appends a " = %s " in front of every key.
         where_clause = ' = %s and '.join(params).__add__(' = %s') if len(params) else ' 1'
-        sql = "select Id, Title, Type, Added, Link, SocialMediaName \
+        sql = "select Id, Title, Type, Added, SocialMediaLink, SocialMediaName \
         from " + settings.DATABASE_RAW_TABLES['multimedia'] + " where " + where_clause
 
         logger.debug("manager kwargs: %s" % kwargs )

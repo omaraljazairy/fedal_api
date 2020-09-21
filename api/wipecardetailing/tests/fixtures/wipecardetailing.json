@@ -98,7 +98,7 @@
         "type": "Image",
         "addedbyuser": 2,
         "added": "2020-07-26T09:55:57Z",
-        "link": "https://fedal.net/carwash.jpg",
+        "socialmedialink": "https://fedal.net/carwash.jpg",
         "socialmedianame": null
     }
 },
@@ -110,7 +110,7 @@
         "type": "SocialMediaLink",
         "addedbyuser": 3,
         "added": "2020-07-26T09:57:15Z",
-        "link": "https://youtube.com/wejhsvgerv32vg",
+        "socialmedialink": "https://youtube.com/wejhsvgerv32vg",
         "socialmedianame": "youtube"
     }
 },
@@ -122,7 +122,7 @@
         "type": "SocialMediaLink",
         "addedbyuser": 2,
         "added": "2020-07-26T09:58:19Z",
-        "link": "https://facebook.com/wejhsvgerv32vg",
+        "socialmedialink": "https://facebook.com/wejhsvgerv32vg",
         "socialmedianame": "facebook"
     }
 },
@@ -134,7 +134,7 @@
         "type": "SocialMediaLink",
         "addedbyuser": 2,
         "added": "2020-08-26T10:58:19Z",
-        "link": "https://facebook.com/wejhsvgerv32v1",
+        "socialmedialink": "https://facebook.com/wejhsvgerv32v1",
         "socialmedianame": "youtube"
     }
 },
@@ -146,7 +146,7 @@
         "type": "SocialMediaLink",
         "addedbyuser": 2,
         "added": "2020-09-26T09:58:19Z",
-        "link": "https://facebook.com/wejhsvgerv32v2",
+        "socialmedialink": "https://facebook.com/wejhsvgerv32v2",
         "socialmedianame": "youtube"
     }
 }

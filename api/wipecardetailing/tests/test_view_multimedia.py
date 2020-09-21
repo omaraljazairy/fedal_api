@@ -144,7 +144,7 @@ class MultimediaViewTestClass(TestCase):
                 'type',
                 'uploaded_by',
                 'added',
-                'link',
+                'socialmedialink',
                 'socialmedianame'
             ]
         )
@@ -224,7 +224,7 @@ class MultimediaViewTestClass(TestCase):
                 "type": "SocialMediaLink",
                 "uploaded_by": "Omar Aljazairy",
                 "added": "2020-07-26 11:58:19+0200",
-                "link": "https://facebook.com/wejhsvgerv32vg",
+                "socialmedialink": "https://facebook.com/wejhsvgerv32vg",
                 "socialmedianame": "facebook",
             }
         ]
@@ -242,7 +242,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'title': 'a view to kill',
             'type': 'SOCIALMEDIALINK',
-            'link': 'http://fedal.nl',
+            'socialmedialink': 'http://fedal.nl',
             'socialmedianame': 'facebook'
         }
 
@@ -266,7 +266,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'title': 'an invalid link',
             'type': 'SocialMediaLink',
-            'link': 'invalid_link',
+            'socialmedialink': 'invalid_link',
             'socialmedianame': 'facebook'
         }
 
@@ -293,7 +293,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'Title': 'a view to kill 2',
             'Type': 'SOCIALMEDIALINK',
-            'Link': 'http://fedal.nl',
+            'Socialmedialink': 'http://fedal.nl',
             'Socialmedianame': 'facebook'
         }
 
@@ -317,7 +317,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'Title': 'a view to kill 4',
             'Type': 'socialmedialink',
-            'Link': 'http://fedal.nl',
+            'Socialmedialink': 'http://fedal.nl',
             'Socialmedianame': 'facebook'
         }
 
@@ -340,7 +340,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'Title': 'a view to kill 3',
             'Type': 'Image',
-            'Link': 'http://fedal.nl/3',
+            'Socialmedialink': 'http://fedal.nl/3',
             'Socialmedianame': 'facebook'
         }
 
@@ -363,7 +363,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'Title': 'a view to kill 3',
             'Type': 'Image',
-            'Link': 'http://fedal.nl/3',
+            'Socialmedialink': 'http://fedal.nl/3',
             'Socialmedianame': 'facebook',
             'file': self.attachment_image
         }
@@ -398,7 +398,7 @@ class MultimediaViewTestClass(TestCase):
         data = {
             'title': 'a view to kill',
             'type': 'SocialMediaLink',
-            'link': 'http://fedal.nl',
+            'socialmedialink': 'http://fedal.nl',
             'socialmedianame': 'facebook'
         }
 

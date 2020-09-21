@@ -36,7 +36,7 @@ class MultimediasSerializerTestClass(TestCase):
                 'type',
                 'uploaded_by',
                 'added',
-                'link',
+                'socialmedialink',
                 'socialmedianame',
                 'download_url'
             ]
@@ -55,7 +55,7 @@ class MultimediasSerializerTestClass(TestCase):
             'type': 'SocialMediaLink',
             'addedbyuser': self.user.pk ,
             'added': datetime.now(),
-            'link': 'http://fedal.nl',
+            'socialmedialink': 'http://fedal.nl',
             'socialmedianame': 'facebook'
         }
 
@@ -80,7 +80,7 @@ class MultimediasSerializerTestClass(TestCase):
             'type': 'SocialMediaLink',
             'addedbyuser': self.user.pk,
             'added': datetime.now(),
-            'link': 'invalid_url',
+            'socialmedialink': 'invalid_url',
             'socialmedianame': 'facebook'
         }
 

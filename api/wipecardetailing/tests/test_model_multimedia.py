@@ -36,7 +36,7 @@ class MultimediaModelTestClass(TestCase):
             title='a new car',
             type='SocialMediaLink',
             addedbyuser=self.user.pk,
-            link='http://fedal.nl'
+            socialmedialink='http://fedal.nl'
         )
         multimedia.save()
 
@@ -56,12 +56,12 @@ class MultimediaModelTestClass(TestCase):
             title='a new car with error',
             type='SocialMediaLink',
             addedbyuser=self.user.pk,
-            link='testlink_invalid'
+            socialmedialink='testlink_invalid'
         )
         multimedia.save()
 
         logger.debug("multimedia 2 object created %s" % multimedia)
-        logger.debug("multimedia 2 link: %s" % multimedia.link)
+        logger.debug("multimedia 2 link: %s" % multimedia.socialmedialink)
 
         self.assertIsInstance(multimedia, Multimedia)
 
