@@ -2,7 +2,7 @@
 --
 -- Host: 192.168.178.25    Database: Wipecardetailing
 -- ------------------------------------------------------
--- Server version	8.0.19
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -53,16 +53,17 @@ CREATE TABLE `Multimedia` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Title` varchar(45) NOT NULL,
   `Type` enum('Image','Video','SocialMediaLink') NOT NULL,
-  `AddedByUser` varchar(45) NOT NULL,
+  `AddedByUser` smallint unsigned NOT NULL,
   `Added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Link` varchar(255) NOT NULL,
+  `SocialMediaLink` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `SocialMediaName` varchar(45) DEFAULT NULL,
+  `file` varchar(254) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `title_type` (`Title`,`Type`),
-  UNIQUE KEY `link_uq` (`Link`),
+  UNIQUE KEY `link_uq` (`SocialMediaLink`),
   KEY `added_idx` (`Added`),
   KEY `socialmedia_idx` (`SocialMediaName`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -74,4 +75,4 @@ CREATE TABLE `Multimedia` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-29 14:11:26
+-- Dump completed on 2020-09-22 20:06:35

@@ -46,7 +46,7 @@ class MultimediaSerializer(serializers.ModelSerializer):
     # make it write_only because it doesn't need to be returned to the view
     addedbyuser = serializers.IntegerField(write_only=True)
     file = serializers.ImageField(write_only=True, required=False)
-    type = serializers.CharField(required=True)
+    # type = serializers.CharField(required=True)
 
     def validate(self, data):
         """
