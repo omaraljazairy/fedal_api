@@ -53,15 +53,14 @@ class MultimediaSerializer(serializers.ModelSerializer):
         custom valitions for the type image and the file field.
 
         If the type field is image and there is no file, return an error.
+        also if the type is socialmedialink and there is no link, raise an exception
         """
 
         logger.debug("Serializers validation multimedia data: %s" % data)
-        if data.get('type', False) == 'IMAGE':
-            if not data.get('file', False):
-                #if file isn't available, rais an exception
-                raise serializers.ValidationError('Image type should have an image file')
-            else:
-                return data
+        if data.get('type', False) == 'IMAGE' and 'file' not in data:
+            raise serializers.ValidationError('Image type should have an image file')
+        elif data.get('type', False) == 'SOCIALMEDIALINK' and len(data.get('socialmedialink', '')) == 0:
+            raise serializers.ValidationError('Socialmedialink is required with the socialmediaLink type')
         else:
             return data
 

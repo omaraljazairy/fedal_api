@@ -254,6 +254,8 @@ class MultimediaViewTestClass(TestCase):
         logger.debug("content: %s" % content)
 
         self.assertEquals(status_code, status.HTTP_201_CREATED)
+        self.assertEquals(content['Link'], data['socialmedialink'])
+        self.assertEquals(content['Msg'], 'OK')
         self.assertEquals(response['Content-Type'], 'application/json')
 
 
@@ -308,7 +310,7 @@ class MultimediaViewTestClass(TestCase):
         self.assertEquals(response['Content-Type'], 'application/json')
 
 
-    def xtest_post_multimedia_valid_request_lowercase_values_201(self):
+    def test_post_multimedia_valid_request_lowercase_values_201(self):
         """
         post a valid request with all required parameters with lowercase letters.
         expect to get back response 201.
@@ -330,6 +332,75 @@ class MultimediaViewTestClass(TestCase):
 
         self.assertEquals(status_code, status.HTTP_201_CREATED)
         self.assertEquals(response['Content-Type'], 'application/json')
+
+    def test_post_multimedia_valid_request_with_existed_title_400(self):
+        """
+        post a valid request with all required parameters but existed title.
+        expect to get back response error response.
+        """
+
+        data = {
+            'Title': 'Car Wash2',
+            'Type': 'socialmedialink',
+            'Socialmedialink': 'http://fedal.nl',
+            'Socialmedianame': 'facebook'
+        }
+
+        response = self.api_client_jwt.post(self.api_url_post, data=data)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_400_BAD_REQUEST)
+        # self.assertEquals(response['Content-Type'], 'application/json')
+
+    def test_post_multimedia_invalid_request_socialmedialink_empty_400(self):
+        """
+        post a request with type socialmedia with an empty socialmendialink.
+        expect to get back response 400.
+        """
+
+        data = {
+            'Title': 'a view to kill 4',
+            'Type': 'SocialMediaLink',
+            'Socialmedialink': '',
+            'Socialmedianame': 'facebook'
+        }
+
+        response = self.api_client_jwt.post(self.api_url_post, data=data)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEquals(response['Content-Type'], 'application/json')
+
+    def test_post_multimedia_invalid_request_no_socialmedialink_param_400(self):
+        """
+        post a request with type socialmedia with no socialmendialink param.
+        expect to get back response 400.
+        """
+
+        data = {
+            'Title': 'a view to kill 4',
+            'Type': 'SocialMediaLink',
+            'Socialmedianame': 'facebook'
+        }
+
+        response = self.api_client_jwt.post(self.api_url_post, data=data)
+        status_code = response.status_code
+        content = response.data
+
+        logger.debug("response: %s" % response)
+        logger.debug("content: %s" % content)
+
+        self.assertEquals(status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEquals(response['Content-Type'], 'application/json')
+
 
     def test_post_multimedia_invalid_request_type_image_without_file_400(self):
         """
