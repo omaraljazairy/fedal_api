@@ -36,7 +36,14 @@ if not os.path.exists(log_dir):
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
-
+SECURE_HSTS_SECONDS = int(os.environ.get('SECURE_HSTS_SECONDS', 60))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = bool(os.environ.get('SECURE_HSTS_INCLUDE_SUBDOMAINS', False))
+SECURE_SSL_REDIRECT = bool(os.environ.get('SECURE_SSL_REDIRECT', False))
+SESSION_COOKIE_SECURE = bool(os.environ.get('SESSION_COOKIE_SECURE', False))
+CSRF_COOKIE_SECURE = bool(os.environ.get('CSRF_COOKIE_SECURE', False))
+SECURE_REFERRER_POLICY = os.environ.get('SECURE_REFERRER_POLICY', None)
+SECURE_HSTS_PRELOAD = bool(os.environ.get('SECURE_HSTS_PRELOAD', False))
+print('SECURE_HSTS_INCLUDE_SUBDOMAINS: ', SECURE_HSTS_INCLUDE_SUBDOMAINS, type(SECURE_HSTS_INCLUDE_SUBDOMAINS))
 # SECURITY WARNING: don't run with debug turned on in production!
 # check if the environ variables are set for the elasticbean environment.
 # if not, use the local env file.
