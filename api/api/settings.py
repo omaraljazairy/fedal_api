@@ -43,6 +43,7 @@ SESSION_COOKIE_SECURE = bool(os.environ.get('SESSION_COOKIE_SECURE', False))
 CSRF_COOKIE_SECURE = bool(os.environ.get('CSRF_COOKIE_SECURE', False))
 SECURE_REFERRER_POLICY = os.environ.get('SECURE_REFERRER_POLICY', None)
 SECURE_HSTS_PRELOAD = bool(os.environ.get('SECURE_HSTS_PRELOAD', False))
+CONN_MAX_AGE = int(os.environ.get('CONN_MAX_AGE', 0))
 # print('SECURE_HSTS_INCLUDE_SUBDOMAINS: ', SECURE_HSTS_INCLUDE_SUBDOMAINS, type(SECURE_HSTS_INCLUDE_SUBDOMAINS))
 # SECURITY WARNING: don't run with debug turned on in production!
 # check if the environ variables are set for the elasticbean environment.
